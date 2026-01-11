@@ -18,7 +18,7 @@ Anthropic integration allows you to use Claude models for text generation in you
 1. Visit [Anthropic Console](https://console.anthropic.com)
 2. Navigate to **API Keys**
 3. Click **"Create Key"**
-4. Name your key (e.g., "Nodebase")
+4. Name your key (e.g., "Snappier")
 5. Copy the key immediately (starts with `sk-ant-`)
 6. Store securely
 

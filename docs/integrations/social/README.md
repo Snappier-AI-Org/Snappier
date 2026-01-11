@@ -1,6 +1,6 @@
 # Social Media Integrations
 
-This section covers social media platform integrations in Nodebase.
+This section covers social media platform integrations in Snappier.
 
 ## Available Platforms
 

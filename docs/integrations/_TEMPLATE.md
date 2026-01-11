@@ -31,7 +31,7 @@ Brief description of what this integration does and its primary use cases.
 1. Go to [Developer Console](https://console.url.com)
 2. Click **"Create App"** or **"New Project"**
 3. Fill in the application details:
-   - App Name: `Nodebase`
+   - App Name: `Snappier`
    - App Type: `Web Application`
 4. Configure redirect URIs:
    - Development: `http://localhost:3000/api/integrations/{service}/callback`
@@ -178,4 +178,4 @@ SERVICE_WEBHOOK_SECRET="webhook-signing-secret"
 
 - [Official API Documentation](https://docs.service.com)
 - [OAuth Guide](https://docs.service.com/oauth)
-- [Nodebase Architecture](../architecture/README.md)
+- [Snappier Architecture](../architecture/README.md)

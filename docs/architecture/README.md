@@ -1,10 +1,10 @@
 # Architecture Documentation
 
-This section covers the technical architecture of Nodebase.
+This section covers the technical architecture of Snappier.
 
 ## System Overview
 
-Nodebase is a workflow automation platform built with:
+Snappier is a workflow automation platform built with:
 - **Next.js 14+** - React framework with App Router
 - **Prisma** - Database ORM
 - **Inngest** - Background job processing

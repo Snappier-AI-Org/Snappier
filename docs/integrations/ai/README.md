@@ -1,6 +1,6 @@
 # AI Integrations
 
-This section covers all AI provider integrations in Nodebase.
+This section covers all AI provider integrations in Snappier.
 
 ## Available AI Providers
 
@@ -19,7 +19,7 @@ All AI integrations follow the same pattern:
 
 ### Credential Setup
 1. Get API key from provider dashboard
-2. Create credential in Nodebase
+2. Create credential in Snappier
 3. Select credential in AI node
 
 ### Node Configuration

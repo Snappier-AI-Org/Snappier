@@ -53,7 +53,7 @@ export default function Page() {
           <a
             target="_blank"
             rel="noopener"
-            href="https://chattoflow.sentry.io/issues/?project=4510667741396992"
+            href="https://snappier.sentry.io/issues/?project=4510667741396992"
           >
             Issues Page
           </a>

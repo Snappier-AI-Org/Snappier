@@ -1,6 +1,6 @@
 # Communication Integrations
 
-This section covers communication platform integrations in Nodebase.
+This section covers communication platform integrations in Snappier.
 
 ## Available Platforms
 

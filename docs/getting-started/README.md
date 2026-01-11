@@ -1,6 +1,6 @@
 # Getting Started
 
-This section covers setting up Nodebase for local development.
+This section covers setting up Snappier for local development.
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ This section covers setting up Nodebase for local development.
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/Vanjems/nodebase.git
-cd nodebase
+git clone https://github.com/Vanjems/snappier.git
+cd snappier
 pnpm install
 ```
 
@@ -49,7 +49,7 @@ Navigate to [http://localhost:3000](http://localhost:3000)
 ## Project Structure
 
 ```
-nodebase/
+snappier/
 ├── docs/              # Documentation (you are here)
 ├── prisma/            # Database schema and migrations
 ├── public/            # Static assets

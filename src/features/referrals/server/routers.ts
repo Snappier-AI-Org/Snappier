@@ -232,7 +232,7 @@ export const referralsRouter = createTRPCRouter({
       });
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://chattoflow.com";
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://snappier.com";
     return {
       referralCode: user.referralCode,
       referralLink: `${baseUrl}/?ref=${user.referralCode}`,
@@ -249,7 +249,7 @@ export const referralsRouter = createTRPCRouter({
       select: { referralCode: true },
     });
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://chattoflow.com";
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://snappier.com";
     return {
       referralCode: user.referralCode,
       referralLink: `${baseUrl}/?ref=${user.referralCode}`,

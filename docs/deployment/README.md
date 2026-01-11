@@ -1,6 +1,6 @@
 # Deployment Documentation
 
-This section covers deploying Nodebase to production.
+This section covers deploying Snappier to production.
 
 ## Platforms
 

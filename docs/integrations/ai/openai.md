@@ -17,7 +17,7 @@ OpenAI integration allows you to use GPT models (GPT-4, GPT-3.5-turbo) for text 
 
 1. Visit [OpenAI API Keys](https://platform.openai.com/api-keys)
 2. Click **"Create new secret key"**
-3. Name your key (e.g., "Nodebase")
+3. Name your key (e.g., "Snappier")
 4. Copy the key immediately (starts with `sk-`)
 5. Store securely
 

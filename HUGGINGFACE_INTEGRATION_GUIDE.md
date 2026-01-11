@@ -7,13 +7,13 @@ This integration allows you to use Hugging Face's text generation models in your
 
 1. Visit [Hugging Face Settings - Tokens](https://huggingface.co/settings/tokens)
 2. Click **"Create new token"** or **"New token"**
-3. Give your token a name (e.g., "Nodebase Workflow")
+3. Give your token a name (e.g., "Snappier Workflow")
 4. Select the permission type:
    - **Read** permission is sufficient for text generation
    - For advanced features, you may need **Write** permissions
 5. Click **"Generate token"**
 6. **Copy the token immediately** - it starts with `hf_`
-7. Store it securely in your Nodebase credentials
+7. Store it securely in your Snappier credentials
 
 ## Available Models
 

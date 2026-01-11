@@ -1,4 +1,4 @@
-# Nodebase - Workflow Automation Platform
+# Snappier - Workflow Automation Platform
 
 A Zapier-like workflow automation platform built with Next.js that allows users to create, manage, and execute custom workflows with various triggers and actions.
 
@@ -31,7 +31,7 @@ A Zapier-like workflow automation platform built with Next.js that allows users 
 1. **Clone the repository**
 ```bash
 git clone <repository-url>
-cd nodebase
+cd snappier
 ```
 
 2. **Install dependencies**
@@ -210,7 +210,7 @@ Premium features are gated behind Polar subscriptions. Check [`src/trpc/init.ts`
 ## 🗂️ Project Structure
 
 ```
-nodebase/
+snappier/
 ├── prisma/              # Database schema and migrations
 ├── public/              # Static assets
 ├── src/
@@ -344,7 +344,7 @@ npx prisma generate
 - Clear browser cookies and try again
 
 **5. Production Deployment Not Working**
-- ❌ Issue: Your deployed app at https://nodebase-six.vercel.app/ is not loading
+- ❌ Issue: Your deployed app at https://snappier-six.vercel.app/ is not loading
 - **Checklist:**
   - ✅ Verify all environment variables are set in Vercel dashboard
   - ✅ Check build logs for errors

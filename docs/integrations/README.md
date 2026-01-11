@@ -1,6 +1,6 @@
 # Integrations Overview
 
-This section documents all integrations available in Nodebase. Each integration guide covers external setup, environment configuration, and usage.
+This section documents all integrations available in Snappier. Each integration guide covers external setup, environment configuration, and usage.
 
 ## Integration Categories
 

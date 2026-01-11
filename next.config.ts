@@ -1,7 +1,7 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
-const sentryOrg = process.env.SENTRY_ORG || "chattoflow";
+const sentryOrg = process.env.SENTRY_ORG || "snappier";
 const sentryProject = process.env.SENTRY_PROJECT || "javascript-nextjs";
 
 const nextConfig: NextConfig = {

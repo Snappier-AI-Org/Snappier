@@ -1,7 +1,7 @@
 /**
  * Discord Trigger Worker
  * ----------------------
- * Listens for Discord message events and forwards them to the Chattoflow
+ * Listens for Discord message events and forwards them to the Snappier
  * Discord trigger webhook.
  *
  * How to run (recommended as a standalone worker):

@@ -1,6 +1,6 @@
 # Google Integrations
 
-This section covers all Google service integrations in Nodebase.
+This section covers all Google service integrations in Snappier.
 
 ## Available Google Services
 
@@ -20,7 +20,7 @@ All Google integrations require OAuth credentials from Google Cloud Console. Her
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Click the project dropdown → **New Project**
-3. Name your project (e.g., "Nodebase")
+3. Name your project (e.g., "Snappier")
 4. Click **Create**
 
 ### Step 2: Enable APIs
@@ -38,7 +38,7 @@ All Google integrations require OAuth credentials from Google Cloud Console. Her
 1. Go to **APIs & Services** → **OAuth consent screen**
 2. Choose **External** (or Internal for Google Workspace)
 3. Fill in app information:
-   - App name: `Nodebase`
+   - App name: `Snappier`
    - User support email: Your email
    - Developer contact: Your email
 4. Add scopes for each service (see individual guides)
@@ -50,7 +50,7 @@ All Google integrations require OAuth credentials from Google Cloud Console. Her
 1. Go to **APIs & Services** → **Credentials**
 2. Click **Create Credentials** → **OAuth client ID**
 3. Application type: **Web application**
-4. Name: `Nodebase Web Client`
+4. Name: `Snappier Web Client`
 5. Add **Authorized redirect URIs**:
    - For Gmail: `http://localhost:3000/api/integrations/gmail/callback`
    - For Google Docs: `http://localhost:3000/api/integrations/google-docs/callback`

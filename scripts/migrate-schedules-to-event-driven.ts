@@ -15,7 +15,7 @@ import { Inngest } from "inngest";
 
 // Create a simple Inngest client for sending events
 const inngest = new Inngest({
-  id: "nodebase-migration",
+  id: "snappier-migration",
   eventKey: process.env.INNGEST_EVENT_KEY,
 });
 

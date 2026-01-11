@@ -18,7 +18,7 @@ Todoist is a popular task management application that helps users organize tasks
 1. Go to the [Todoist App Management Console](https://developer.todoist.com/appconsole.html)
 2. Click **"Create a new app"**
 3. Fill in the application details:
-   - **App Name:** `Nodebase` (or your preferred name)
+   - **App Name:** `Snappier` (or your preferred name)
    - **App Service URL:** Your application URL (e.g., `https://your-domain.com`)
    - **OAuth Redirect URL:** 
      - Development: `http://localhost:3000/api/integrations/todoist/callback`
@@ -227,4 +227,4 @@ Todoist supports natural language due dates:
 - [Todoist REST API Documentation](https://developer.todoist.com/rest/v2/)
 - [Todoist OAuth Documentation](https://developer.todoist.com/guides/#oauth)
 - [Todoist Filter Syntax](https://todoist.com/help/articles/introduction-to-filters)
-- [Nodebase Architecture](../architecture/README.md)
+- [Snappier Architecture](../architecture/README.md)

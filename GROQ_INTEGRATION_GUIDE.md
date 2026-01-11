@@ -21,14 +21,14 @@ Follow these simple steps to get started with Groq:
 
 1. Once logged in, navigate to the **API Keys** section in the left sidebar
 2. Click the **Create API Key** button
-3. Give your API key a descriptive name (e.g., "Nodebase Workflows")
+3. Give your API key a descriptive name (e.g., "Snappier Workflows")
 4. Click **Submit** or **Create**
 5. **Important**: Copy your API key immediately! It starts with `gsk_`
 6. Store it securely - you won't be able to see it again
 
-### 3. Add the API Key to Nodebase
+### 3. Add the API Key to Snappier
 
-1. In Nodebase, go to **Credentials** page
+1. In Snappier, go to **Credentials** page
 2. Click **New Credential**
 3. Select **Groq** from the credential type dropdown
 4. Give your credential a name (e.g., "My Groq API Key")
@@ -167,8 +167,8 @@ Visit [https://groq.com/pricing](https://groq.com/pricing) for current pricing d
 If you suspect your API key has been compromised:
 1. Immediately delete it in the Groq console
 2. Create a new API key
-3. Update your Nodebase credentials with the new key
+3. Update your Snappier credentials with the new key
 
 ---
 
-**Need Help?** If you encounter issues, check the Nodebase documentation or reach out to support.
+**Need Help?** If you encounter issues, check the Snappier documentation or reach out to support.

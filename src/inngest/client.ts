@@ -13,7 +13,7 @@ const getInngestBaseUrl = () => {
 };
 
 export const inngest = new Inngest({
-  id: "nodebase",
+  id: "snappier",
   eventKey: process.env.INNGEST_EVENT_KEY, // Make sure this is set correctly
   middleware: [realtimeMiddleware()],
   // Only set baseURL in development to point to local Next.js app

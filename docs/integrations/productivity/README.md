@@ -1,6 +1,6 @@
 # Productivity Integrations
 
-This section covers productivity tool integrations in Nodebase.
+This section covers productivity tool integrations in Snappier.
 
 ## Available Tools
 

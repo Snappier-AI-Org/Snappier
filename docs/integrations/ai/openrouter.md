@@ -39,7 +39,7 @@ OpenRouter charges per API usage with a small markup over the base provider pric
 
 1. Once logged in, click your profile icon → **Keys** or visit [openrouter.ai/keys](https://openrouter.ai/keys)
 2. Click **Create Key**
-3. Give your API key a descriptive name (e.g., "Nodebase Workflows")
+3. Give your API key a descriptive name (e.g., "Snappier Workflows")
 4. Optionally set a credit limit for the key
 5. Click **Create**
 6. **Important**: Copy your API key immediately! It starts with `sk-or-`
@@ -198,7 +198,7 @@ OpenRouter complements (does not replace) your existing AI integrations:
 **Solution:** 
 1. Visit [openrouter.ai/keys](https://openrouter.ai/keys)
 2. Create a new API key
-3. Update your credential in Nodebase
+3. Update your credential in Snappier
 
 #### Issue: "Insufficient Credits"
 **Cause:** Your OpenRouter account has no credits  

@@ -1,6 +1,6 @@
-# Nodebase Documentation
+# Snappier Documentation
 
-Welcome to the Nodebase documentation. This folder contains comprehensive guides for setting up and using integrations, understanding the architecture, and deploying the application.
+Welcome to the Snappier documentation. This folder contains comprehensive guides for setting up and using integrations, understanding the architecture, and deploying the application.
 
 ## 📁 Documentation Structure
 

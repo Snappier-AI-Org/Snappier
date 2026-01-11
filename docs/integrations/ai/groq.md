@@ -25,7 +25,7 @@ Groq provides ultra-fast AI inference powered by their custom Language Processin
 
 1. Once logged in, navigate to the **API Keys** section in the left sidebar
 2. Click the **Create API Key** button
-3. Give your API key a descriptive name (e.g., "Nodebase Workflows")
+3. Give your API key a descriptive name (e.g., "Snappier Workflows")
 4. Click **Submit** or **Create**
 5. **Important**: Copy your API key immediately! It starts with `gsk_`
 6. Store it securely - you won't be able to see it again
