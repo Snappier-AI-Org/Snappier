@@ -244,11 +244,7 @@ export const WorkflowItem = memo(
               {formatDistanceToNow(data.createdAt, { addSuffix: true })}
             </span>
           }
-          image={
-            <div className="size-8 flex items-center justify-center">
-              <WorkflowIcon className="size-5 text-muted-foreground" />
-            </div>
-          }
+          image={<WorkflowIcon className="size-5" />}
           onRemove={handleRemove}
           isRemoving={removeWorkflow.isPending}
           menuItems={renameMenuItem}

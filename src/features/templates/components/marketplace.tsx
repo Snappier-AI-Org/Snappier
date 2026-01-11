@@ -144,7 +144,7 @@ export const MarketplaceGrid = () => {
 export const MarketplaceHeader = () => {
   return (
     <EntityHeader
-      title="Template Marketplace"
+      title="Marketplace"
       description="Discover and use templates created by the community"
     />
   );
@@ -262,7 +262,7 @@ export const MarketplaceCard = memo(({ data }: { data: MarketplaceCardData }) =>
 
   return (
     <>
-      <Card className="group hover:shadow-lg transition-shadow">
+      <Card className="group hover:shadow-lg transition-all border-border/50 bg-card/50 hover:bg-card hover:border-border rounded-xl">
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-2">

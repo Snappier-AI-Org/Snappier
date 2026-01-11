@@ -1,4 +1,4 @@
-import { AlertTriangleIcon, Loader2Icon, MoreVerticalIcon, PackageOpenIcon, PlusIcon, SearchIcon, TrashIcon } from "lucide-react";
+import { AlertTriangleIcon, Loader2Icon, MoreVerticalIcon, PackageOpenIcon, PlusIcon, SearchIcon, TrashIcon, Sparkles } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -49,9 +49,9 @@ export const EntityHeader = ({
   return (
     <div className="flex flex-row items-center justify-between gap-x-4 md:gap-x-6 lg:gap-x-8">
       <div className="flex flex-col gap-y-1">
-        <h1 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold">{title}</h1>
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">{title}</h1>
         {description && (
-            <p className="text-xs md:text-sm lg:text-base text-muted-foreground">
+            <p className="text-sm md:text-base text-muted-foreground">
             {description}
             </p>
         )}
@@ -59,8 +59,8 @@ export const EntityHeader = ({
         {(onNew && !newButtonHref) && (
             <Button 
                 disabled={isCreating || disabled} 
-                size="sm"
-                className="h-9 md:h-10 lg:h-11 px-3 md:px-4 lg:px-5 text-xs md:text-sm lg:text-base"
+                size="default"
+                className="h-10 md:h-11 px-4 md:px-5 font-medium shadow-sm hover:shadow-md transition-all"
                 onClick={onNew}
                 >
                 <PlusIcon className="size-4 md:size-5" />
@@ -70,8 +70,8 @@ export const EntityHeader = ({
         {(newButtonHref && !onNew) && (
             <Button 
                 disabled={isCreating || disabled} 
-                size="sm"
-                className="h-9 md:h-10 lg:h-11 px-3 md:px-4 lg:px-5 text-xs md:text-sm lg:text-base"
+                size="default"
+                className="h-10 md:h-11 px-4 md:px-5 font-medium shadow-sm hover:shadow-md transition-all"
                 onClick={onNew}
                 asChild
                 >
@@ -100,12 +100,14 @@ export const EntityContainer = ({
     pagination,
 }: EntityContainerProps) => {
     return (
-    <div className="entity-container p-4 md:px-8 md:py-6 lg:px-12 lg:py-8 xl:px-16 xl:py-10 h-full">
-        <div className="mx-auto max-w-7xl w-full flex flex-col gap-y-6 md:gap-y-8 lg:gap-y-10 h-full">
+    <div className="entity-container p-6 md:px-8 md:py-8 lg:px-12 lg:py-10 h-full">
+        <div className="mx-auto max-w-6xl w-full flex flex-col gap-y-8 md:gap-y-10 h-full">
             {header}
-        <div className="flex flex-col gap-y-4 md:gap-y-6 lg:gap-y-8 h-full">
+        <div className="flex flex-col gap-y-6 h-full">
             {search}
-            {children}
+            <div className="flex-1 min-h-0">
+                {children}
+            </div>
         </div>
         {pagination}
     </div>
@@ -128,16 +130,16 @@ export const EntitySearch = ({
   return (
       <div className="relative ml-auto">
         {isSearching ? (
-          <Loader2Icon className="size-3.5 md:size-4 absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-muted-foreground animate-spin" />
+          <Loader2Icon className="size-4 absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground animate-spin" />
         ) : (
-          <SearchIcon className="size-3.5 md:size-4 absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <SearchIcon className="size-4 absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
         )}
         <Input
-        className="max-w-[200px] md:max-w-[250px] lg:max-w-[300px] xl:max-w-[350px] bg-background shadow-none border-border pl-8 md:pl-10 h-9 md:h-10 lg:h-11 text-xs md:text-sm lg:text-base"
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
+          className="w-full max-w-xs md:max-w-sm bg-background/50 shadow-sm border-border/50 pl-11 h-10 md:h-11 text-sm focus-visible:bg-background focus-visible:border-primary/50 transition-all"
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
     </div>
   );
 };
@@ -164,16 +166,17 @@ export const EntityPagination = ({
   }, [page, totalPages, onPageChange]);
 
     return (
-    <div className="flex items-center justify-between gap-x-4 md:gap-x-6 lg:gap-x-8 w-full pt-4 md:pt-6">
-      <div className="flex-1 text-xs md:text-sm lg:text-base text-muted-foreground">
-        Page {page} of {totalPages || 1}
-      </div>
-      <div className="flex items-center justify-end gap-x-2 md:gap-x-3">
+    <div className="flex items-center justify-between gap-x-4 w-full pt-6 border-t border-border/50">
+      <p className="text-sm text-muted-foreground">
+        Page <span className="font-medium text-foreground">{page}</span> of{" "}
+        <span className="font-medium text-foreground">{totalPages || 1}</span>
+      </p>
+      <div className="flex items-center gap-x-2">
           <Button
             disabled={page === 1 || disabled}
             variant="outline"
             size="sm"
-            className="h-8 md:h-9 lg:h-10 px-3 md:px-4 lg:px-5 text-xs md:text-sm lg:text-base"
+            className="h-9 px-4 hover:bg-accent/50"
             onClick={handlePrevious}
           >
             Previous
@@ -182,7 +185,7 @@ export const EntityPagination = ({
             disabled={page === totalPages || totalPages === 0 || disabled}
             variant="outline"
             size="sm"
-            className="h-8 md:h-9 lg:h-10 px-3 md:px-4 lg:px-5 text-xs md:text-sm lg:text-base"
+            className="h-9 px-4 hover:bg-accent/50"
             onClick={handleNext}
           >
             Next
@@ -213,15 +216,15 @@ export const LoadingView = ({
 
 export const SkeletonList = ({ count = 5 }: { count?: number }) => {
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-3">
       {Array.from({ length: count }).map((_, i) => (
         <div key={i} className="animate-pulse">
-          <div className="p-4 border rounded-lg">
+          <div className="p-5 border border-border/50 rounded-xl bg-card/50">
             <div className="flex items-center gap-4">
-              <div className="size-8 rounded bg-muted" />
+              <div className="size-10 rounded-lg bg-muted/70" />
               <div className="flex-1 space-y-2">
-                <div className="h-4 bg-muted rounded w-3/4" />
-                <div className="h-3 bg-muted rounded w-1/2" />
+                <div className="h-4 bg-muted/70 rounded w-2/3" />
+                <div className="h-3 bg-muted/50 rounded w-1/3" />
               </div>
             </div>
           </div>
@@ -256,23 +259,26 @@ export const EmptyView = ({
   onNew
 }: EmptyViewProps) => {
   return (
-        <Empty className="entity-empty border border-dashed bg-background">
+        <Empty className="entity-empty border border-dashed border-border/50 bg-card/30 rounded-xl py-12">
           <EmptyHeader>
             <EmptyMedia variant="icon">
-              <PackageOpenIcon />
+              <div className="p-4 rounded-xl bg-primary/10">
+                <PackageOpenIcon className="size-8 text-primary" />
+              </div>
             </EmptyMedia>
           </EmptyHeader>
-        <EmptyTitle>
-          No items
+        <EmptyTitle className="text-lg font-semibold">
+          No items yet
         </EmptyTitle>
         {!!message && (
-        <EmptyDescription>
+        <EmptyDescription className="text-muted-foreground">
           {message}
         </EmptyDescription>
         )}
         {!!onNew && (
         <EmptyContent>
-          <Button onClick={onNew}>
+          <Button onClick={onNew} className="mt-4">
+            <PlusIcon className="size-4 mr-2" />
             Add item
           </Button>
         </EmptyContent>
@@ -357,27 +363,31 @@ export const EntityItem = ({
     <Link href={href} prefetch>
       <Card
       className={cn(
-        "entity-item p-4 md:p-5 lg:p-6 shadow-none hover:shadow-md transition-shadow cursor-pointer",
+        "entity-item p-4 md:p-5 border-border/50 bg-card/50 hover:bg-card hover:border-border shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group rounded-xl",
         isRemoving && "opacity-50 cursor-not-allowed",
         className,
       )}
       > 
-      <CardContent className="flex flex-row items-center justify-between p-0 gap-4 md:gap-6">
-          <div className="flex items-center gap-3 md:gap-4 lg:gap-5 min-w-0 flex-1">
-            {image}
+      <CardContent className="flex flex-row items-center justify-between p-0 gap-4 md:gap-5">
+          <div className="flex items-center gap-4 min-w-0 flex-1">
+            {image && (
+              <div className="shrink-0 flex items-center justify-center size-10 md:size-12 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/15 transition-colors">
+                {image}
+              </div>
+            )}
             <div className="min-w-0 flex-1">
-              <CardTitle className="text-base md:text-lg lg:text-xl font-medium truncate">
+              <CardTitle className="text-base md:text-lg font-semibold truncate group-hover:text-primary transition-colors">
                 {title}
               </CardTitle>
               {!!subtitle && (
-                <CardDescription className="text-xs md:text-sm lg:text-base mt-1">
+                <CardDescription className="text-sm text-muted-foreground mt-0.5 truncate">
                   {subtitle}
                 </CardDescription>
               )}
             </div>
           </div>
               {(actions || onRemove) && (
-                <div className="flex gap-x-2 md:gap-x-3 lg:gap-x-4 items-center shrink-0">
+                <div className="flex gap-x-2 items-center shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
                   {actions}
                   {onRemove && (
                     <DropdownMenu>
@@ -385,22 +395,22 @@ export const EntityItem = ({
                         <Button
                           size="icon"
                           variant="ghost"
-                          className="size-8 md:size-9 lg:size-10"
+                          className="size-9 hover:bg-accent"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <MoreVerticalIcon className="size-4 md:size-5" />
+                          <MoreVerticalIcon className="size-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
                         align="end"
-                        className="min-w-[140px] md:min-w-[160px]"
+                        className="min-w-[160px]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {menuItems}
                         <DropdownMenuItem 
                           onClick={handleRemove}
                           disabled={isRemoving}
-                          className="text-xs md:text-sm"
+                          className="text-destructive focus:text-destructive focus:bg-destructive/10"
                         >
                           {isRemoving ? (
                             <>

@@ -170,15 +170,13 @@ export const CredentialItem = memo(({
         </>
       }
       image={
-        <div className="size-8 flex items-center justify-center">
-            <Image 
-              src={logo} 
-              alt={data.type} 
-              width={20} 
-              height={20}
-              style={{ width: 'auto', height: 'auto' }}
-            />
-        </div>
+        <Image 
+          src={logo} 
+          alt={data.type} 
+          width={20} 
+          height={20}
+          style={{ width: 'auto', height: 'auto' }}
+        />
       }
       onRemove={handleRemove}
       isRemoving={removeCredential.isPending}
