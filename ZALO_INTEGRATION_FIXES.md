@@ -85,7 +85,7 @@ Added specific error handling for common Zalo API errors:
 Variable Name: ZaloBot
 Bot Token: 1234567890:abcdef... (your long token)
 Recipient ID: 8851495596870002259 (or {{webhook.payload.sender.id}})
-Message: Hello from ChatToFlow!
+Message: Hello from Snappier!
 ```
 
 ### 4. Test the Workflow
@@ -133,7 +133,7 @@ Content-Type: application/json
     "user_id": "8851495596870002259"
   },
   "message": {
-    "text": "Hello from ChatToFlow!"
+    "text": "Hello from Snappier!"
   }
 }
 ```

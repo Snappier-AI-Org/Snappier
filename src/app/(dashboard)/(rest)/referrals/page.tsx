@@ -9,8 +9,8 @@ import {
 } from "@/features/referrals/components/referrals-dashboard";
 
 export const metadata = {
-  title: "Referrals - ChattoFlow",
-  description: "Earn money by referring friends to ChattoFlow",
+  title: "Referrals - Snappier",
+  description: "Earn money by referring friends to Snappier",
 };
 
 export default async function ReferralsPage() {

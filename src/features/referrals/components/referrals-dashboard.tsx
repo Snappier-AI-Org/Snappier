@@ -45,8 +45,8 @@ export function ReferralsDashboard() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Join ChattoFlow!",
-          text: "Check out ChattoFlow - the best workflow automation platform!",
+          title: "Join Snappier!",
+          text: "Check out Snappier - the best workflow automation platform!",
           url: referralLink,
         });
       } catch {

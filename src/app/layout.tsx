@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ChatToFlow",
-  description: "ChatToFlow - AI powered chat",
+  title: "Snappier",
+  description: "Snappier - AI powered chat",
   icons: {
     icon: '/logos/logo.svg',
   },
