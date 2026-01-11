@@ -78,7 +78,7 @@ export function ReferralsDashboard() {
   return (
     <div className="space-y-6">
       {/* Referral Link Card */}
-      <Card className="bg-gradient-to-r from-[#0021F3] to-[#5C70EA] text-white border-0">
+      <Card className="bg-linear-to-r from-[#0021F3] to-[#5C70EA] text-white border-0">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-white">
             <Gift className="size-5" />
@@ -214,7 +214,7 @@ export function ReferralsDashboard() {
 
       {/* Withdraw CTA */}
       {(data?.stats.approvedCommission || 0) >= 1000 && (
-        <Card className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-purple-500/20">
+        <Card className="bg-linear-to-r from-purple-500/10 to-pink-500/10 border-purple-500/20">
           <CardContent className="pt-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
@@ -298,7 +298,7 @@ export function ReferralsDashboard() {
                     className="flex items-center justify-between py-2 border-b last:border-0"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="size-8 rounded-full bg-gradient-to-br from-[#0021F3] to-[#5C70EA] flex items-center justify-center text-white font-medium text-sm">
+                      <div className="size-8 rounded-full bg-linear-to-br from-[#0021F3] to-[#5C70EA] flex items-center justify-center text-white font-medium text-sm">
                         {user.name?.charAt(0).toUpperCase() || "?"}
                       </div>
                       <div>

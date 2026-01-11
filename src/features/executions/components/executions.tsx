@@ -142,11 +142,7 @@ export const ExecutionItem = memo(({
       href={`/executions/${data.id}`}
       title={formatStatus(data.status)}
       subtitle={subtitle}
-      image = {
-        <div className="size-8 flex items-center justify-center">
-          {getStatusIcon(data.status)}
-       </div>
-      }
+      image={getStatusIcon(data.status)}
     />
   )
 });

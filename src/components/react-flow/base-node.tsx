@@ -19,12 +19,12 @@ BaseNodeProps
         "bg-card text-card-foreground relative rounded-[18px] hover:bg-accent transition-all duration-300",
         // Pebble node styling with soft landing animation
         "animate-in fade-in zoom-in-95 duration-300",
-        // Default border - visible green tint
-        !status && "border-2 border-green-500/40 dark:border-green-400/30",
+        // Default border - more visible with primary color (for initial state or no status)
+        (!status || status === "initial") && "border-2 border-primary/30 shadow-md dark:border-primary/20",
         // Status-based borders - border matches node size, no external glow
-        status === "loading" && "border-2 border-blue-500",
-        status === "success" && "border-2 border-green-500",
-        status === "error" && "border-2 border-red-500",
+        status === "loading" && "border-2 border-blue-500 shadow-blue-500/20 shadow-md",
+        status === "success" && "border-2 border-green-500 shadow-green-500/20 shadow-md",
+        status === "error" && "border-2 border-red-500 shadow-red-500/20 shadow-md",
         className,
       )}
       tabIndex={0}

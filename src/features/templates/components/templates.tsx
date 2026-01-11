@@ -269,11 +269,7 @@ export const TemplateItem = memo(({ data }: { data: TemplateItemData }) => {
           </div>
         </div>
       }
-      image={
-        <div className="size-10 flex items-center justify-center rounded-lg bg-primary/10">
-          {categoryIcons[data.category]}
-        </div>
-      }
+      image={categoryIcons[data.category]}
       onRemove={handleRemove}
       isRemoving={deleteTemplate.isPending}
     />
