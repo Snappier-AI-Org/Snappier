@@ -17,7 +17,7 @@ interface EdgeAnimationControllerProps {
  * When a workflow is executing:
  * - All edges become animated with flowing particles
  * - The animation creates a "data flowing through pipes" visual effect
- * - Perfect for the ChatToFlow deep-tech ocean abyss theme
+ * - Perfect for the Snappier deep-tech ocean abyss theme
  * 
  * Advanced features:
  * - Edges connected to actively running nodes animate faster

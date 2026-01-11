@@ -16,13 +16,15 @@ BaseNodeProps
       ref={ref}
       id="base-node"
       className={cn(
-        "bg-card text-card-foreground relative border rounded-sm hover:bg-accent transition-all duration-300",
-        // Default border
-        !status && "border-muted-foreground",
-        // Status-based borders and effects
-        status === "loading" && "border-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.4)]",
-        status === "success" && "border-green-500 shadow-[0_0_12px_rgba(34,197,94,0.4)]",
-        status === "error" && "border-red-500 shadow-[0_0_12px_rgba(239,68,68,0.4)]",
+        "bg-card text-card-foreground relative rounded-[18px] hover:bg-accent transition-all duration-300",
+        // Pebble node styling with soft landing animation
+        "animate-in fade-in zoom-in-95 duration-300",
+        // Default border - visible green tint
+        !status && "border-2 border-green-500/40 dark:border-green-400/30",
+        // Status-based borders - border matches node size, no external glow
+        status === "loading" && "border-2 border-blue-500",
+        status === "success" && "border-2 border-green-500",
+        status === "error" && "border-2 border-red-500",
         className,
       )}
       tabIndex={0}
@@ -30,13 +32,13 @@ BaseNodeProps
     >
       {props.children}
       {status === "error" && (
-        <XCircleIcon className="absolute right-0.5 bottom-0.5 size-2 text-red-700 stroke-3"/>
+        <XCircleIcon className="absolute right-1 bottom-1 size-3 text-red-600 stroke-[2.5]"/>
       )}
       {status === "success" && (
-        <CheckCircle2Icon className="absolute right-0.5 bottom-0.5 size-2 text-green-700 stroke-3"/>
+        <CheckCircle2Icon className="absolute right-1 bottom-1 size-3 text-green-600 stroke-[2.5]"/>
       )}
       {status === "loading" && (
-        <Loader2Icon className="absolute -right-0.5 -bottom-0.5 size-2 text-blue-700 stroke-3 animate-spin"/>
+        <Loader2Icon className="absolute right-1 bottom-1 size-3 text-blue-600 stroke-[2.5] animate-spin"/>
       )}
     </div>
   );

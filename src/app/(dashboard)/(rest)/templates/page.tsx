@@ -13,7 +13,7 @@ import { requireAuth } from "@/lib/auth-utils";
 import type { SearchParams } from "nuqs/server";
 
 export const metadata = {
-  title: "My Templates | ChatToFlow",
+  title: "My Templates | Snappier",
   description: "Manage your workflow templates",
 };
 

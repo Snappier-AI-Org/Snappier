@@ -112,7 +112,7 @@ export const ZaloDialog = ({
       "user_id": "RECIPIENT_ID"
     },
     "message": {
-      "text": "Hello from ChatToFlow!"
+      "text": "Hello from Snappier!"
     }
   }'`;
 

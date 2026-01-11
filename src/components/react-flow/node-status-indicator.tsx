@@ -103,17 +103,15 @@ export const NodeStatusIndicator = ({
         case "overlay":
           return <SpinnerLoadingIndicator>{children}</SpinnerLoadingIndicator>;
         case "border":
-          return <BorderLoadingIndicator className={className}>{children}</BorderLoadingIndicator>;
+          // Border is now handled by base-node.tsx directly
+          return <>{children}</>;
         default:
           return <>{children}</>;
       }
     case "success":
-      return (
-        <StatusBorder className={cn("border-green-500/50 dark:border-green-400/50", className)}>{children}</StatusBorder>
-      );
     case "error":
-      return <StatusBorder className={cn("border-red-700/50", className)}>{children}</StatusBorder>;
     default:
+      // Border styling is now handled by base-node.tsx directly
       return <>{children}</>;
   }
 };

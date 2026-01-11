@@ -115,12 +115,12 @@ const { hasActiveSubscription, isLoading } = useHasActiveSubscription();
                         <Link href="/" prefetch>
                         <NextImage 
                           src="/logos/logo.svg" 
-                          alt="ChatToFlow" 
+                          alt="Snappier" 
                           width={24} 
                           height={24}
                           // className="shrink-0 size-6"
                         />
-                        <span className="font-semibold text-sm">ChatToFlow</span>
+                        <span className="font-semibold text-sm">Snappier</span>
                         </Link>
                     </SidebarMenuButton>
             </SidebarMenuItem>
