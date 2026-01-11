@@ -11,7 +11,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { templateId } = await params;
   return {
-    title: `Template | ChatToFlow`,
+    title: `Template | Snappier`,
     description: "View template details",
   };
 }

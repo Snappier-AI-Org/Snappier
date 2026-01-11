@@ -1,13 +1,12 @@
-"use client";
+﻿"use client";
 
-import { memo } from "react";
 import {
   BaseEdge,
-  getBezierPath,
   type Edge,
   type EdgeProps,
+  getBezierPath,
 } from "@xyflow/react";
-import { cn } from "@/lib/utils";
+import { memo, useMemo } from "react";
 
 export type AnimatedEdgeData = {
   animated?: boolean;
@@ -17,11 +16,6 @@ export type AnimatedEdgeData = {
 
 type AnimatedEdgeType = Edge<AnimatedEdgeData>;
 
-/**
- * A custom edge component with flowing particle animation
- * The animation creates a "data flowing through pipes" effect
- * perfect for the ChatToFlow deep-tech/ocean abyss theme
- */
 export const AnimatedEdge = memo(
   ({
     id,
@@ -33,9 +27,13 @@ export const AnimatedEdge = memo(
     targetPosition,
     style = {},
     markerEnd,
-    data,
     selected,
+    data,
   }: EdgeProps<AnimatedEdgeType>) => {
+    
+    // Check if this edge should be animated (during execution)
+    const isAnimated = data?.animated === true;
+    
     const [edgePath] = getBezierPath({
       sourceX,
       sourceY,
@@ -43,129 +41,124 @@ export const AnimatedEdge = memo(
       targetX,
       targetY,
       targetPosition,
+      curvature: 0.25,
     });
 
-    const isAnimated = data?.animated ?? false;
-    const flowSpeed = data?.flowSpeed ?? "normal";
-    const flowDirection = data?.flowDirection ?? "forward";
+    const pathLength = useMemo(() => {
+      const dx = targetX - sourceX;
+      const dy = targetY - sourceY;
+      return Math.sqrt(dx * dx + dy * dy) * 1.2;
+    }, [sourceX, sourceY, targetX, targetY]);
 
-    // Calculate animation duration based on speed
-    const speedDurations: Record<string, string> = {
-      slow: "3s",
-      normal: "1.5s",
-      fast: "0.8s",
-    };
+    // ZOOM animation - single dash flying across
+    const animDuration = useMemo(() => {
+      const speed = data?.flowSpeed || "normal";
+      // Quick zoom speed
+      const baseSpeed = speed === "slow" ? 0.5 : speed === "fast" ? 0.2 : 0.3;
+      return baseSpeed;
+    }, [data?.flowSpeed]);
 
-    const animationDuration = speedDurations[flowSpeed] ?? "1.5s";
-    const animationDirection = flowDirection === "reverse" ? "reverse" : "normal";
+    // Single dash - one bright line zooming across
+    // The dash is short, the gap is the entire path length so only one appears
+    const dashLength = 20;
+    const gapLength = pathLength;
 
     return (
-      <>
-        {/* Background glow layer for animated edges */}
-        {isAnimated && (
-          <path
-            className="animated-edge-glow"
-            d={edgePath}
-            fill="none"
-            strokeWidth={8}
-            style={{
-              stroke: "url(#edge-glow-gradient)",
-              opacity: 0.4,
-              filter: "blur(4px)",
-            }}
-          />
-        )}
-
-        {/* Main edge path with gradient */}
+      <g className="animated-edge-group">
+        {/* Glow layer - enhanced when animated */}
+        <path
+          d={edgePath}
+          fill="none"
+          stroke="var(--snap-primary, #22C55E)"
+          strokeWidth={isAnimated ? 10 : selected ? 6 : 4}
+          strokeLinecap="round"
+          opacity={isAnimated ? 0.3 : selected ? 0.15 : 0.05}
+          style={{ filter: isAnimated ? "blur(6px)" : "blur(4px)" }}
+        />
+        
+        {/* Main edge line - base tendril */}
         <BaseEdge
           id={id}
           path={edgePath}
           markerEnd={markerEnd}
           style={{
             ...style,
-            strokeWidth: isAnimated ? 2.5 : 2,
-            stroke: isAnimated
-              ? "url(#animated-edge-gradient)"
-              : "url(#default-edge-gradient)",
+            stroke: isAnimated 
+              ? "var(--snap-active, #4ADE80)" 
+              : selected 
+                ? "var(--snap-primary, #22C55E)" 
+                : "var(--tendril-color, #64748B)",
+            strokeWidth: 2,
+            strokeLinecap: "round",
+            transition: "stroke 0.3s ease",
           }}
-          className={cn(
-            "transition-all duration-300",
-            isAnimated && "animated-edge-active",
-            selected && "edge-selected"
-          )}
         />
-
-        {/* Flowing particles overlay - creates the "flowing" effect */}
+        
+        {/* Single ZOOM dash - one line flying across */}
         {isAnimated && (
           <>
-            {/* Primary flow particles */}
+            {/* The zooming dash */}
             <path
               d={edgePath}
               fill="none"
-              strokeWidth={3}
-              className="flow-particles"
-              style={{
-                stroke: "url(#flow-particle-gradient)",
-                strokeDasharray: "8 16",
-                strokeLinecap: "round",
-                animation: `flowAnimation ${animationDuration} linear infinite`,
-                animationDirection,
-              }}
-            />
-            {/* Secondary glow particles - offset for depth effect */}
+              stroke="url(#zoomGradient)"
+              strokeWidth={4}
+              strokeLinecap="round"
+              strokeDasharray={`${dashLength} ${gapLength}`}
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                from={gapLength + dashLength}
+                to={0}
+                dur={`${animDuration}s`}
+                repeatCount="indefinite"
+                calcMode="linear"
+              />
+            </path>
+            
+            {/* Gradient definition for the zoom effect */}
+            <defs>
+              <linearGradient id="zoomGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="var(--snap-accent, #86EFAC)" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
+                <stop offset="100%" stopColor="var(--snap-accent, #86EFAC)" stopOpacity="0.3" />
+              </linearGradient>
+            </defs>
+            
+            {/* Bright core of the zoom */}
             <path
               d={edgePath}
               fill="none"
+              stroke="#ffffff"
               strokeWidth={2}
-              className="flow-particles-glow"
-              style={{
-                stroke: "url(#flow-particle-glow-gradient)",
-                strokeDasharray: "4 20",
-                strokeLinecap: "round",
-                animation: `flowAnimation ${animationDuration} linear infinite`,
-                animationDirection,
-                animationDelay: "-0.5s",
-              }}
-            />
+              strokeLinecap="round"
+              strokeDasharray={`${dashLength * 0.6} ${gapLength}`}
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                from={gapLength + dashLength}
+                to={0}
+                dur={`${animDuration}s`}
+                repeatCount="indefinite"
+                calcMode="linear"
+              />
+            </path>
           </>
         )}
-
-        {/* SVG Definitions for gradients */}
-        <defs>
-          {/* Default edge gradient - subtle blue */}
-          <linearGradient id="default-edge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--edge-color-start, rgba(92, 112, 234, 0.6))" />
-            <stop offset="100%" stopColor="var(--edge-color-end, rgba(55, 174, 226, 0.6))" />
-          </linearGradient>
-
-          {/* Animated edge gradient - vibrant flowing colors */}
-          <linearGradient id="animated-edge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--flow-color-start, #0021F3)" />
-            <stop offset="50%" stopColor="var(--flow-color-mid, #5C70EA)" />
-            <stop offset="100%" stopColor="var(--flow-color-end, #37AEE2)" />
-          </linearGradient>
-
-          {/* Glow gradient for animated edges */}
-          <linearGradient id="edge-glow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(0, 33, 243, 0.5)" />
-            <stop offset="50%" stopColor="rgba(92, 112, 234, 0.6)" />
-            <stop offset="100%" stopColor="rgba(55, 174, 226, 0.5)" />
-          </linearGradient>
-
-          {/* Flow particle gradient - the actual flowing bits */}
-          <linearGradient id="flow-particle-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.9)" />
-            <stop offset="50%" stopColor="rgba(55, 174, 226, 1)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.9)" />
-          </linearGradient>
-
-          {/* Secondary particle glow */}
-          <linearGradient id="flow-particle-glow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(92, 112, 234, 0.8)" />
-            <stop offset="100%" stopColor="rgba(0, 33, 243, 0.8)" />
-          </linearGradient>
-        </defs>
-      </>
+        
+        {/* Selection highlight */}
+        {selected && !isAnimated && (
+          <path
+            d={edgePath}
+            fill="none"
+            stroke="var(--snap-primary, #22C55E)"
+            strokeWidth={6}
+            strokeLinecap="round"
+            opacity={0.2}
+            style={{ filter: "blur(2px)" }}
+          />
+        )}
+      </g>
     );
   }
 );
