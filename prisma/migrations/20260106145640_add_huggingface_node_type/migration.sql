@@ -1,0 +1,5 @@
+-- AlterEnum
+ALTER TYPE "CredentialType" ADD VALUE 'HUGGINGFACE';
+
+-- AlterEnum
+ALTER TYPE "NodeType" ADD VALUE 'HUGGINGFACE';

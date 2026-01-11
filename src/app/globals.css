@@ -1,0 +1,2478 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-serif: Source Serif 4, serif;
+  --radius: 0.425rem;
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+  --tracking-normal: var(--tracking-normal);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-md: var(--shadow-md);
+  --shadow: var(--shadow);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-2xs: var(--shadow-2xs);
+  --spacing: var(--spacing);
+  --letter-spacing: var(--letter-spacing);
+  --shadow-offset-y: var(--shadow-offset-y);
+  --shadow-offset-x: var(--shadow-offset-x);
+  --shadow-spread: var(--shadow-spread);
+  --shadow-blur: var(--shadow-blur);
+  --shadow-opacity: var(--shadow-opacity);
+  --color-shadow-color: var(--shadow-color);
+  --color-destructive-foreground: var(--destructive-foreground);
+}
+
+:root {
+  --radius: 0.625rem;
+  
+  /* ===== Surface Ocean Theme - Light Mode ===== */
+  /* Inspired by sunlit shallow tropical waters */
+  
+  /* Primary Ocean Colors */
+  --cyber-primary: #0077B6;          /* Ocean blue - main brand color */
+  --cyber-primary-hover: #0096C7;    /* Lighter blue on hover */
+  --cyber-primary-glow: rgba(0, 119, 182, 0.35);
+  --cyber-secondary: #00B4D8;        /* Bright cyan - secondary accent */
+  --cyber-accent: #48CAE4;           /* Light turquoise - highlights */
+  --cyber-indigo: #023E8A;           /* Deep water accent */
+  
+  /* Surface Water Effects */
+  --ocean-surface: #CAF0F8;          /* Lightest water surface */
+  --ocean-shallow: #90E0EF;          /* Shallow water tint */
+  --ocean-foam: rgba(255, 255, 255, 0.85);  /* Sea foam white */
+  --ocean-caustic: rgba(72, 202, 228, 0.15); /* Light caustic effect */
+  
+  /* Glass Effect Colors - like looking through water */
+  --glass-white: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 119, 182, 0.15);
+  --glass-hover: rgba(0, 180, 216, 0.1);
+
+  /* UI & Functional Colors */
+  --cyber-canvas: #F0F9FF;           /* Very light blue-white */
+  --cyber-surface: #FFFFFF;
+  --cyber-grid-dots: rgba(0, 119, 182, 0.12);
+  --cyber-card-bg: rgba(255, 255, 255, 0.9);
+  --cyber-stroke: rgba(0, 119, 182, 0.18);
+
+  /* Typography Colors */
+  --cyber-text-primary: #03045E;     /* Deep ocean text */
+  --cyber-text-secondary: #0077B6;
+  --cyber-text-tertiary: #0096C7;
+
+  /* Updated color scheme with ocean theme */
+  --background: oklch(0.98 0.01 220);
+  --foreground: oklch(0.15 0.05 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.04 260);
+  --popover: oklch(0.99 0.005 220);
+  --popover-foreground: oklch(0.15 0.04 260);
+  --primary: oklch(0.55 0.15 230);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.02 220);
+  --secondary-foreground: oklch(0.25 0.08 230);
+  --muted: oklch(0.96 0.01 220);
+  --muted-foreground: oklch(0.45 0.05 230);
+  --accent: oklch(0.85 0.08 200);
+  --accent-foreground: oklch(0.20 0.08 230);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --border: oklch(0.90 0.02 220);
+  --input: oklch(0.97 0.01 220);
+  --ring: oklch(0.55 0.15 230);
+  --chart-1: oklch(0.55 0.15 230);
+  --chart-2: oklch(0.60 0.12 200);
+  --chart-3: oklch(0.65 0.10 190);
+  --chart-4: oklch(0.50 0.18 240);
+  --chart-5: oklch(0.70 0.08 180);
+  --sidebar: oklch(0.98 0.01 220);
+  --sidebar-foreground: oklch(0.20 0.05 230);
+  --sidebar-primary: oklch(0.55 0.15 230);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  /* Subtle accent - just slightly darker than sidebar background */
+  --sidebar-accent: oklch(0.92 0.02 220);
+  --sidebar-accent-foreground: oklch(0.20 0.05 230);
+  --sidebar-border: oklch(0.95 0.01 220);
+  --sidebar-ring: oklch(0.55 0.15 230);
+  --destructive-foreground: oklch(1 0 0);
+  --font-sans: Inter, sans-serif;
+  --font-serif: Source Serif 4, serif;
+  --font-mono: JetBrains Mono, monospace;
+  --shadow-color: hsl(200 50% 30%);
+  --shadow-opacity: 0.08;
+  --shadow-blur: 8px;
+  --shadow-spread: 0px;
+  --shadow-offset-x: 0px;
+  --shadow-offset-y: 2px;
+  --letter-spacing: 0em;
+  --spacing: 0.25rem;
+  --shadow-2xs: 0px 1px 2px 0px hsl(200 40% 30% / 0.04);
+  --shadow-xs: 0px 1px 3px 0px hsl(200 40% 30% / 0.06);
+  --shadow-sm:
+    0px 1px 3px 0px hsl(200 40% 30% / 0.08), 0px 1px 2px -1px hsl(200 40% 30% / 0.06);
+  --shadow:
+    0px 2px 4px 0px hsl(200 40% 30% / 0.08), 0px 1px 3px -1px hsl(200 40% 30% / 0.06);
+  --shadow-md:
+    0px 4px 6px 0px hsl(200 40% 30% / 0.1), 0px 2px 4px -1px hsl(200 40% 30% / 0.08);
+  --shadow-lg:
+    0px 8px 12px 0px hsl(200 40% 30% / 0.12), 0px 4px 6px -1px hsl(200 40% 30% / 0.1);
+  --shadow-xl:
+    0px 16px 20px 0px hsl(200 40% 30% / 0.14), 0px 8px 10px -1px hsl(200 40% 30% / 0.1);
+  --shadow-2xl: 0px 24px 48px 0px hsl(200 40% 30% / 0.2);
+  --tracking-normal: 0em;
+}
+
+.dark {
+  /* ===== Deep Ocean Abyss Theme - Dark Mode ===== */
+  /* Inspired by the bioluminescent deep sea */
+  
+  /* Primary Abyss Colors - UPDATED for darker, more subdued buttons */
+  --cyber-primary: #1a237e;          /* Deep indigo - less bright, more abyss-like */
+  --cyber-primary-hover: #283593;    /* Slightly lighter on hover */
+  --cyber-primary-glow: rgba(26, 35, 126, 0.5);
+  --cyber-secondary: #3949ab;        /* Muted indigo-blue */
+  --cyber-accent: #37AEE2;           /* Cyan accent - jellyfish glow (keep for highlights) */
+  --cyber-indigo: #05014A;           /* Deepest abyss color */
+  
+  /* Button-specific colors */
+  --button-primary-bg: #0d1b4a;      /* Very deep navy for buttons */
+  --button-primary-hover: #1a2d6b;   /* Slightly lighter on hover */
+  --button-primary-border: rgba(55, 174, 226, 0.3); /* Subtle cyan border glow */
+  
+  /* Deep Water Effects */
+  --abyss-deep: #000810;             /* The darkest depth */
+  --abyss-mid: #05014A;              /* Mid-depth purple-blue */
+  --abyss-glow: rgba(0, 33, 243, 0.15); /* Ambient bioluminescence */
+  --abyss-particle: rgba(55, 174, 226, 0.6); /* Floating particles */
+  
+  /* Glass Effect Colors - murky deep water */
+  --glass-white: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(92, 112, 234, 0.15);
+  --glass-hover: rgba(55, 174, 226, 0.12);
+
+  /* UI & Functional Colors */
+  --cyber-canvas: #000810;
+  --cyber-surface: #05014A;
+  --cyber-grid-dots: rgba(0, 33, 243, 0.2);
+  --cyber-card-bg: rgba(5, 1, 74, 0.6);
+  --cyber-stroke: rgba(92, 112, 234, 0.2);
+
+  /* Typography Colors */
+  --cyber-text-primary: #E8F4FC;     /* Soft white like deep sea foam */
+  --cyber-text-secondary: #90E0EF;   /* Glowing cyan text */
+  --cyber-text-tertiary: #5C70EA;    /* Muted bioluminescent */
+
+  --background: oklch(0.12 0.03 264);
+  --foreground: oklch(0.95 0.01 220);
+  --card: oklch(0.14 0.035 264);
+  --card-foreground: oklch(0.95 0.01 220);
+  --popover: oklch(0.13 0.03 264);
+  --popover-foreground: oklch(0.95 0.01 220);
+  --primary: oklch(0.55 0.28 264);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.20 0.04 264);
+  --secondary-foreground: oklch(0.92 0.02 220);
+  --muted: oklch(0.18 0.03 264);
+  --muted-foreground: oklch(0.65 0.04 230);
+  --accent: oklch(0.22 0.05 264);
+  --accent-foreground: oklch(0.92 0.02 220);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.25 0.04 264);
+  --input: oklch(0.18 0.03 264);
+  --ring: oklch(0.55 0.28 264);
+  --chart-1: oklch(0.55 0.28 264);
+  --chart-2: oklch(0.60 0.22 230);
+  --chart-3: oklch(0.65 0.18 200);
+  --chart-4: oklch(0.50 0.25 264);
+  --chart-5: oklch(0.45 0.20 280);
+  --sidebar: oklch(0.08 0.025 264);
+  --sidebar-foreground: oklch(0.90 0.02 220);
+  --sidebar-primary: oklch(0.55 0.26 264);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.14 0.035 264);
+  --sidebar-accent-foreground: oklch(0.90 0.02 220);
+  --sidebar-border: oklch(0.22 0.04 264);
+  --sidebar-ring: oklch(0.55 0.26 264);
+  --destructive-foreground: oklch(0.95 0 0);
+  --radius: 0.425rem;
+  --font-sans: Inter, sans-serif;
+  --font-serif: Source Serif 4, serif;
+  --font-mono: JetBrains Mono, monospace;
+  --shadow-color: hsl(264 80% 5%);
+  --shadow-opacity: 0.5;
+  --shadow-blur: 16px;
+  --shadow-spread: 0px;
+  --shadow-offset-x: 0px;
+  --shadow-offset-y: 4px;
+  --letter-spacing: 0em;
+  --spacing: 0.25rem;
+  --shadow-2xs: 0px 1px 2px 0px hsl(264 50% 5% / 0.4);
+  --shadow-xs: 0px 1px 3px 0px hsl(264 50% 5% / 0.45);
+  --shadow-sm:
+    0px 2px 4px 0px hsl(264 50% 5% / 0.5), 0px 1px 2px -1px hsl(264 50% 5% / 0.4);
+  --shadow:
+    0px 2px 6px 0px hsl(264 50% 5% / 0.4), 0px 1px 3px -1px hsl(264 50% 5% / 0.4);
+  --shadow-md:
+    0px 4px 8px 0px hsl(264 50% 5% / 0.45), 0px 2px 4px -1px hsl(264 50% 5% / 0.45);
+  --shadow-lg:
+    0px 8px 16px 0px hsl(264 50% 5% / 0.5), 0px 4px 6px -1px hsl(264 50% 5% / 0.5);
+  --shadow-xl:
+    0px 16px 24px 0px hsl(264 50% 5% / 0.55), 0px 8px 10px -1px hsl(264 50% 5% / 0.55);
+  --shadow-2xl: 0px 24px 48px 0px hsl(264 50% 5% / 0.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    letter-spacing: var(--tracking-normal);
+  }
+}
+
+/* Ensure chat messages wrap properly */
+.overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@layer base {
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+}
+
+/* ========================================================================== */
+/* ===== NODE STATUS STYLING - Execution State Visual Feedback ===== */
+/* ========================================================================== */
+/* Ensures node borders change color during workflow execution */
+/* Running = Blue, Success = Green, Error = Red */
+
+/* Ensure border-3 class works (used by NodeStatusIndicator) */
+.border-3 {
+  border-width: 3px !important;
+  border-style: solid !important;
+}
+
+/* Base node status - ensure border classes work */
+#base-node.border-blue-500 {
+  border-color: rgb(59, 130, 246) !important;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+#base-node.border-green-500 {
+  border-color: rgb(34, 197, 94) !important;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+}
+
+#base-node.border-red-500 {
+  border-color: rgb(239, 68, 68) !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
+/* StatusBorder component status colors */
+.border-green-500\/50,
+.border-green-400\/50 {
+  border-color: rgba(34, 197, 94, 0.5) !important;
+}
+
+.border-red-700\/50 {
+  border-color: rgba(185, 28, 28, 0.5) !important;
+}
+
+.border-blue-700\/40 {
+  border-color: rgba(29, 78, 216, 0.4) !important;
+}
+
+/* Dark mode node status - enhanced glow */
+.dark #base-node.border-blue-500 {
+  border-color: rgb(59, 130, 246) !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+.dark #base-node.border-green-500 {
+  border-color: rgb(34, 197, 94) !important;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5), 0 0 40px rgba(34, 197, 94, 0.2);
+}
+
+.dark #base-node.border-red-500 {
+  border-color: rgb(239, 68, 68) !important;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 0 40px rgba(239, 68, 68, 0.2);
+}
+
+/* Dark mode StatusBorder enhanced glow */
+.dark .border-green-500\/50,
+.dark .border-green-400\/50 {
+  border-color: rgba(34, 197, 94, 0.6) !important;
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
+}
+
+.dark .border-red-700\/50 {
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.4);
+}
+
+.dark .border-blue-700\/40 {
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+}
+
+/* React Flow node selection styles */
+.react-flow__node.selected #base-node {
+  @apply ring-3 ring-muted-foreground/25;
+}
+
+/* Override selection ring when node has execution status */
+.react-flow__node.selected #base-node[class*="border-green"] {
+  --tw-ring-color: rgba(34, 197, 94, 0.4);
+}
+
+.react-flow__node.selected #base-node[class*="border-red"] {
+  --tw-ring-color: rgba(239, 68, 68, 0.4);
+}
+
+.react-flow__node.selected #base-node[class*="border-blue"] {
+  --tw-ring-color: rgba(59, 130, 246, 0.4);
+}
+
+/* ===== React Flow Light Mode - Surface Ocean Theme ===== */
+/* Inspired by sunlit tropical shallow waters with caustic light effects */
+/* GRADIENT DIRECTION: Outside-In (edges are tinted, center is bright) */
+
+:root {
+  --flow-dot-color: rgba(0, 119, 182, 0.1);
+}
+
+.react-flow {
+  /* ============================================================
+     LIGHT MODE CANVAS GRADIENT - OUTSIDE TO INSIDE
+     ============================================================
+     The gradient flows from the edges INWARD to the center.
+     Edges have subtle ocean tint, center is bright/clean.
+     
+     HOW TO ADJUST:
+     
+     1. EDGE GRADIENTS (Top, Left, Right, Bottom):
+        - Each edge uses a linear-gradient with direction
+        - "to bottom" = Top edge gradient
+        - "to top" = Bottom edge gradient  
+        - "to right" = Left edge gradient
+        - "to left" = Right edge gradient
+        - Adjust the color rgba() values to change tint
+        - Adjust the percentage (e.g., 15%, 30%) to change how far the gradient extends
+     
+     2. CORNER VIGNETTES:
+        - radial-gradient with position like "at 0% 0%" = top-left corner
+        - "at 100% 0%" = top-right, "at 0% 100%" = bottom-left, etc.
+        - Adjust size (e.g., "40% 40%") to change corner coverage
+     
+     3. BASE COLOR:
+        - The final solid color is the center/base of the canvas
+     ============================================================ */
+  
+  background: 
+    /* ===== TOP EDGE - Gradient going downward ===== */
+    linear-gradient(to bottom, 
+      rgba(144, 224, 239, 0.15) 0%,    /* Top edge color - adjust opacity (0.15) for intensity */
+      rgba(144, 224, 239, 0.05) 8%,    /* Fade point - adjust % for gradient length */
+      transparent 15%                  /* Where gradient ends - adjust % to extend/shorten */
+    ),
+    
+    /* ===== BOTTOM EDGE - Gradient going upward ===== */
+    linear-gradient(to top, 
+      rgba(0, 119, 182, 0.08) 0%,      /* Bottom edge color */
+      rgba(0, 119, 182, 0.03) 5%,
+      transparent 12%
+    ),
+    
+    /* ===== LEFT EDGE - Gradient going rightward ===== */
+    linear-gradient(to right, 
+      rgba(0, 180, 216, 0.1) 0%,       /* Left edge color */
+      rgba(0, 180, 216, 0.03) 6%,
+      transparent 12%
+    ),
+    
+    /* ===== RIGHT EDGE - Gradient going leftward ===== */
+    linear-gradient(to left, 
+      rgba(0, 180, 216, 0.1) 0%,       /* Right edge color */
+      rgba(0, 180, 216, 0.03) 6%,
+      transparent 12%
+    ),
+    
+    /* ===== CORNER VIGNETTES - Subtle corner tints ===== */
+    /* Top-left corner */
+    radial-gradient(ellipse 35% 35% at 0% 0%, 
+      rgba(72, 202, 228, 0.12) 0%, 
+      transparent 70%
+    ),
+    /* Top-right corner */
+    radial-gradient(ellipse 35% 35% at 100% 0%, 
+      rgba(72, 202, 228, 0.1) 0%, 
+      transparent 70%
+    ),
+    /* Bottom-left corner */
+    radial-gradient(ellipse 30% 30% at 0% 100%, 
+      rgba(0, 119, 182, 0.08) 0%, 
+      transparent 70%
+    ),
+    /* Bottom-right corner */
+    radial-gradient(ellipse 30% 30% at 100% 100%, 
+      rgba(0, 119, 182, 0.08) 0%, 
+      transparent 70%
+    ),
+    
+    /* ===== BASE COLOR - Center of canvas ===== */
+    /* This is the main canvas color - keep it light/bright */
+    linear-gradient(180deg, 
+      rgba(250, 253, 255, 1) 0%,       /* Adjust for base brightness */
+      rgba(255, 255, 255, 1) 100%      /* Pure white center */
+    );
+}
+
+.react-flow__background {
+  background: transparent !important;
+}
+
+.react-flow__controls {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 119, 182, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 
+    0 2px 8px rgba(0, 119, 182, 0.1),
+    0 4px 16px rgba(0, 180, 216, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.react-flow__controls button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0, 119, 182, 0.1);
+  color: #0077B6;
+  width: 28px;
+  height: 28px;
+}
+
+.react-flow__controls button:last-child {
+  border-bottom: none;
+}
+
+.react-flow__controls button:hover {
+  background-color: rgba(0, 180, 216, 0.15);
+}
+
+.react-flow__minimap {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 119, 182, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+.react-flow__edge {
+  stroke: var(--cyber-primary, #0077B6);
+  stroke-width: 1.5px;
+}
+
+.react-flow__edge.selected {
+  stroke: var(--cyber-secondary, #00B4D8);
+  stroke-width: 2px;
+}
+
+.react-flow__connectionline {
+  stroke: var(--cyber-accent, #48CAE4);
+  stroke-width: 2px;
+  stroke-dasharray: 6 4;
+}
+
+.react-flow__handle {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--cyber-primary, #0077B6);
+  width: 10px;
+  height: 10px;
+  transition: all 0.2s ease;
+}
+
+.react-flow__handle.connectable:hover {
+  background-color: var(--cyber-secondary, #00B4D8);
+  border-color: var(--cyber-secondary, #00B4D8);
+  box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
+}
+
+/* ===== React Flow Dark Mode - Deep Ocean Abyss Theme ===== */
+/* The dark depths with bioluminescent glows */
+
+.dark {
+  --flow-dot-color: rgba(92, 112, 234, 0.2);
+}
+
+.dark .react-flow {
+  /* Deep abyss gradient with subtle bioluminescent spots */
+  background: 
+    /* Bioluminescent ambient glow spots */
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(0, 33, 243, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 80% 70%, rgba(55, 174, 226, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse 70% 30% at 60% 20%, rgba(92, 112, 234, 0.03) 0%, transparent 45%),
+    /* Deep ocean gradient - darkest at edges */
+    radial-gradient(ellipse 120% 100% at 50% 50%, 
+      rgba(5, 1, 74, 0.9) 0%, 
+      rgba(0, 8, 16, 1) 70%,
+      rgba(0, 0, 0, 1) 100%
+    );
+}
+
+.dark .react-flow__background {
+  background: transparent !important;
+}
+
+.dark .react-flow__controls {
+  background-color: rgba(5, 1, 74, 0.8);
+  border: 1px solid rgba(92, 112, 234, 0.2);
+  box-shadow: 
+    0 2px 12px rgba(0, 33, 243, 0.2),
+    inset 0 1px 0 rgba(92, 112, 234, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.dark .react-flow__controls button {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(92, 112, 234, 0.15);
+  color: #90E0EF;
+}
+
+.dark .react-flow__controls button:hover {
+  background-color: rgba(0, 33, 243, 0.3);
+  color: #CAF0F8;
+}
+
+.dark .react-flow__minimap {
+  background-color: rgba(5, 1, 74, 0.8);
+  border: 1px solid rgba(92, 112, 234, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.dark .react-flow__edge {
+  stroke: var(--cyber-secondary, #5C70EA);
+  stroke-width: 1.5px;
+}
+
+.dark .react-flow__edge.selected {
+  stroke: var(--cyber-accent, #37AEE2);
+  stroke-width: 2.5px;
+  filter: drop-shadow(0 0 4px rgba(55, 174, 226, 0.5));
+}
+
+.dark .react-flow__connectionline {
+  stroke: var(--cyber-accent, #37AEE2);
+  stroke-width: 2px;
+  stroke-dasharray: 6 4;
+}
+
+.dark .react-flow__handle {
+  background-color: rgba(5, 1, 74, 0.9);
+  border: 2px solid var(--cyber-secondary, #5C70EA);
+  transition: all 0.2s ease;
+}
+
+.dark .react-flow__handle.connectable {
+  background-color: rgba(92, 112, 234, 0.4);
+  border-color: var(--cyber-secondary, #5C70EA);
+}
+
+.dark .react-flow__handle.connectable:hover {
+  background-color: var(--cyber-accent, #37AEE2);
+  border-color: var(--cyber-accent, #37AEE2);
+  box-shadow: 
+    0 0 12px rgba(55, 174, 226, 0.6),
+    0 0 24px rgba(0, 33, 243, 0.4);
+}
+
+/* ===== Panel styling - Ocean Themed ===== */
+
+/* Light mode - Surface water glass effect */
+.cyber-panel {
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 119, 182, 0.15);
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 20px rgba(0, 119, 182, 0.08),
+    0 1px 3px rgba(0, 119, 182, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+.cyber-panel-header {
+  border-bottom: 1px solid rgba(0, 119, 182, 0.1);
+  padding: 12px 16px;
+}
+
+/* Dark mode - Abyss glass effect */
+.dark .cyber-panel {
+  background-color: rgba(5, 1, 74, 0.85);
+  border: 1px solid rgba(92, 112, 234, 0.2);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(0, 33, 243, 0.1),
+    inset 0 1px 0 rgba(92, 112, 234, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.dark .cyber-panel-header {
+  border-bottom: 1px solid rgba(92, 112, 234, 0.15);
+}
+
+.cyber-button-primary {
+  background-color: var(--cyber-primary, #0077B6);
+  color: #FFFFFF;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 0 16px rgba(0, 33, 243, 0.4);
+}
+
+.cyber-button-primary:hover {
+  background-color: var(--cyber-primary-hover, #1a3aff);
+  box-shadow: 0 0 24px rgba(0, 33, 243, 0.6);
+}
+
+/* Node card styling */
+.react-flow__node {
+  border-radius: 12px;
+}
+
+.react-flow__node.selected #base-node {
+  @apply ring-2;
+}
+
+/* Status-aware selection - default to cyber primary */
+.react-flow__node.selected #base-node:not([class*="border-green"]):not([class*="border-red"]):not([class*="border-blue"]) {
+  --tw-ring-color: var(--cyber-primary, #0021F3);
+  box-shadow: 0 0 16px rgba(0, 33, 243, 0.3);
+}
+
+/* Green glow for success */
+.react-flow__node.selected #base-node[class*="border-green"] {
+  --tw-ring-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+/* Red glow for error */
+.react-flow__node.selected #base-node[class*="border-red"] {
+  --tw-ring-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+/* Blue glow for loading */
+.react-flow__node.selected #base-node[class*="border-blue"] {
+  --tw-ring-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.react-flow__pane.canvas-drop-active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid #0021F3;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: inset 0 0 24px rgba(0, 33, 243, 0.2);
+}
+
+/* Dark mode panel styling - Cyber-Tech Dark */
+.dark .cyber-panel {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 33, 243, 0.2);
+}
+
+.dark .cyber-panel-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Dark mode node selection glow */
+.dark .react-flow__node.selected #base-node {
+  @apply ring-2;
+}
+
+/* Dark mode - Status-aware selection - default to cyber primary */
+.dark .react-flow__node.selected #base-node:not([class*="border-green"]):not([class*="border-red"]):not([class*="border-blue"]) {
+  --tw-ring-color: var(--cyber-primary, #0021F3);
+  box-shadow: 0 0 24px rgba(0, 33, 243, 0.5);
+}
+
+/* Dark mode - Green glow for success */
+.dark .react-flow__node.selected #base-node[class*="border-green"] {
+  --tw-ring-color: rgba(34, 197, 94, 0.7);
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.6);
+}
+
+/* Dark mode - Red glow for error */
+.dark .react-flow__node.selected #base-node[class*="border-red"] {
+  --tw-ring-color: rgba(239, 68, 68, 0.7);
+  box-shadow: 0 0 24px rgba(239, 68, 68, 0.6);
+}
+
+/* Dark mode - Blue glow for loading */
+.dark .react-flow__node.selected #base-node[class*="border-blue"] {
+  --tw-ring-color: rgba(59, 130, 246, 0.7);
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.6);
+}
+
+.dark .react-flow__pane.canvas-drop-active::after {
+  border: 2px solid var(--cyber-primary, #0021F3);
+  box-shadow: inset 0 0 32px rgba(0, 33, 243, 0.2);
+}
+
+/* Cyber-Tech Glass Card Effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 33, 243, 0.3);
+}
+
+/* Cyber-Tech Glow Effects */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(0, 33, 243, 0.4);
+}
+
+.glow-primary-strong {
+  box-shadow: 0 0 30px rgba(0, 33, 243, 0.6), 0 0 60px rgba(0, 33, 243, 0.3);
+}
+
+/* Cyber-Tech Background Gradients */
+.bg-cyber-vortex {
+  background: radial-gradient(ellipse at center, #05014A 0%, #000000 100%);
+}
+
+.bg-cyber-atmospheric {
+  background: linear-gradient(90deg, rgba(0, 33, 243, 0.15) 0%, #000000 100%);
+}
+
+/* ===== Integration Category Dropdown Styles ===== */
+
+/* Custom scrollbar for category dropdowns */
+.category-dropdown-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cyber-primary) transparent;
+}
+
+.category-dropdown-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.category-dropdown-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.category-dropdown-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 33, 243, 0.2);
+  border-radius: 3px;
+}
+
+.category-dropdown-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 33, 243, 0.4);
+}
+
+/* Filter pill hover state with glow */
+.dark .filter-pill-active {
+  box-shadow: 0 0 12px rgba(0, 33, 243, 0.4);
+}
+
+/* Category header sticky background */
+.category-header-sticky {
+  @apply sticky top-0 z-10;
+  background: var(--popover);
+}
+
+/* Integration item selected state */
+.integration-item-selected {
+  @apply bg-primary/10 border border-primary/20;
+}
+
+.dark .integration-item-selected {
+  @apply bg-primary/15;
+  box-shadow: inset 0 0 16px rgba(0, 33, 243, 0.1);
+}
+
+/* OAuth badge styling */
+.oauth-badge {
+  @apply text-[10px] font-medium px-1.5 py-0.5 rounded;
+  background: rgba(0, 33, 243, 0.08);
+  color: var(--cyber-primary);
+}
+
+.dark .oauth-badge {
+  background: rgba(0, 33, 243, 0.15);
+  color: var(--cyber-secondary);
+}
+
+/* Integration icon container */
+.integration-icon-container {
+  @apply h-8 w-8 rounded-md flex items-center justify-center shrink-0;
+  background: var(--background);
+  border: 1px solid var(--border);
+}
+
+.dark .integration-icon-container {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== Cyber-Tech Animations ===== */
+
+/* Data flow animation for edges */
+@keyframes data-flow {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ===== ChatToFlow - Flowing Edge Animation ===== */
+/* Ocean-themed flowing effect for data transfer visualization */
+/* Light mode: Sun-dappled surface water ripples */
+/* Dark mode: Deep abyss bioluminescent flow */
+
+/* Main flowing animation - creates the "data packet" movement effect */
+@keyframes flowAnimation {
+  0% {
+    stroke-dashoffset: 48;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Light mode - Surface water shimmer pulse */
+@keyframes edgeGlowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(0, 119, 182, 0.3)) 
+            drop-shadow(0 0 4px rgba(0, 180, 216, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 4px rgba(0, 119, 182, 0.5)) 
+            drop-shadow(0 0 8px rgba(0, 180, 216, 0.4))
+            drop-shadow(0 0 12px rgba(72, 202, 228, 0.3));
+  }
+}
+
+/* Dark mode - Bioluminescent pulse (defined in dark section below) */
+
+/* Ripple effect animation for particles */
+@keyframes flowRipple {
+  0% {
+    stroke-width: 2;
+    opacity: 0.8;
+  }
+  50% {
+    stroke-width: 4;
+    opacity: 1;
+  }
+  100% {
+    stroke-width: 2;
+    opacity: 0.8;
+  }
+}
+
+/* Surface caustic shimmer - light refracting through water surface */
+@keyframes causticShimmer {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.7;
+  }
+}
+
+/* CSS Variables for flow animation colors */
+/* Light Mode - Surface Ocean Colors */
+:root {
+  --edge-color-start: rgba(0, 119, 182, 0.5);
+  --edge-color-end: rgba(0, 180, 216, 0.5);
+  --flow-color-start: #0077B6;
+  --flow-color-mid: #00B4D8;
+  --flow-color-end: #48CAE4;
+}
+
+/* Dark Mode - Deep Abyss Bioluminescent Colors */
+.dark {
+  --edge-color-start: rgba(92, 112, 234, 0.6);
+  --edge-color-end: rgba(55, 174, 226, 0.6);
+  --flow-color-start: #0021F3;
+  --flow-color-mid: #5C70EA;
+  --flow-color-end: #37AEE2;
+}
+
+/* Base edge styles - these apply to our custom AnimatedEdge */
+.flow-particles,
+.flow-particles-glow {
+  pointer-events: none;
+}
+
+/* Light mode - Surface water shimmer animation */
+.animated-edge-active {
+  animation: edgeGlowPulse 2.5s ease-in-out infinite, causticShimmer 4s ease-in-out infinite;
+}
+
+/* Edge selected state */
+.edge-selected {
+  filter: drop-shadow(0 0 6px var(--cyber-primary)) !important;
+}
+
+/* ===== Dark Mode - Deep Ocean Abyss Bioluminescent Effects ===== */
+
+/* Override pulse animation for dark mode - more dramatic bioluminescence */
+@keyframes bioluminescentPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(0, 33, 243, 0.5)) 
+            drop-shadow(0 0 6px rgba(92, 112, 234, 0.4));
+  }
+  33% {
+    filter: drop-shadow(0 0 6px rgba(0, 33, 243, 0.7)) 
+            drop-shadow(0 0 12px rgba(92, 112, 234, 0.5))
+            drop-shadow(0 0 18px rgba(55, 174, 226, 0.3));
+  }
+  66% {
+    filter: drop-shadow(0 0 8px rgba(0, 33, 243, 0.8)) 
+            drop-shadow(0 0 16px rgba(92, 112, 234, 0.6))
+            drop-shadow(0 0 28px rgba(55, 174, 226, 0.4));
+  }
+}
+
+.dark .animated-edge-active {
+  animation: bioluminescentPulse 3s ease-in-out infinite;
+}
+
+.dark .animated-edge-glow {
+  opacity: 0.6;
+}
+
+/* Enhanced glow for dark mode flow particles */
+.dark .flow-particles {
+  filter: drop-shadow(0 0 3px rgba(55, 174, 226, 0.8));
+}
+
+.dark .flow-particles-glow {
+  filter: drop-shadow(0 0 6px rgba(92, 112, 234, 0.6));
+}
+
+/* Pulse glow animation for executing nodes */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--cyber-primary-glow);
+  }
+  50% {
+    box-shadow: 0 0 24px var(--cyber-primary-glow), 0 0 40px rgba(92, 112, 234, 0.3);
+  }
+}
+
+/* Neon flicker animation */
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--cyber-primary), 0 0 20px var(--cyber-primary);
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+    text-shadow: none;
+  }
+}
+
+/* Typing cursor animation */
+@keyframes blink-cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Scanline animation */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Grid movement animation */
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Status indicator pulse */
+@keyframes status-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* Data packet flow on edges */
+@keyframes packet-flow {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+/* ===== Animated Edge Styles ===== */
+
+/* Default edge style - no animation */
+.react-flow__edge-path {
+  stroke-dasharray: none;
+  transition: stroke 0.2s ease, stroke-width 0.2s ease;
+}
+
+/* Only animate edges when workflow is executing */
+.workflow-executing .react-flow__edge-path {
+  stroke-dasharray: 8 4;
+  animation: data-flow 0.8s linear infinite;
+}
+
+.workflow-executing .react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 8 4;
+  animation: data-flow 0.5s linear infinite;
+}
+
+/* Edge hover glow effect */
+.react-flow__edge:hover .react-flow__edge-path {
+  filter: drop-shadow(0 0 4px var(--cyber-primary));
+  stroke-width: 2px;
+}
+
+.dark .react-flow__edge:hover .react-flow__edge-path {
+  filter: drop-shadow(0 0 6px var(--cyber-primary));
+}
+
+/* Connection line animation - only during execution */
+.react-flow__connectionline {
+  stroke-dasharray: 6 4;
+}
+
+.workflow-executing .react-flow__connectionline {
+  animation: data-flow 0.4s linear infinite;
+}
+
+/* ===== Node Execution States ===== */
+/* Running = Blue, Success = Green, Error = Red */
+
+.node-executing,
+.node-running {
+  animation: pulse-glow-blue 1.5s ease-in-out infinite;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.5);
+}
+
+.node-success {
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.5);
+  border-color: rgba(34, 197, 94, 0.6) !important;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.node-error,
+.node-failed {
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.5);
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.node-pending {
+  opacity: 0.7;
+}
+
+/* Blue pulse glow for running state */
+@keyframes pulse-glow-blue {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+  }
+}
+
+/* ===== Cyber Grid Background ===== */
+
+.cyber-grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 33, 243, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 33, 243, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-move 30s linear infinite;
+}
+
+.dark .cyber-grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 33, 243, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 33, 243, 0.08) 1px, transparent 1px);
+}
+
+/* Scanline overlay effect */
+.scanline-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.015) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.dark .scanline-overlay::after {
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.04) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Moving scanline */
+.scanline-moving::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 33, 243, 0.03) 50%,
+    transparent
+  );
+  height: 30%;
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* ===== Terminal Styles ===== */
+
+.terminal-container {
+  border-radius: 0.5rem;
+  border: 1px solid var(--cyber-stroke);
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--cyber-stroke);
+  background: rgba(5, 1, 74, 0.5);
+}
+
+.terminal-content {
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #4ade80;
+  overflow: auto;
+}
+
+/* Typing animation with cursor */
+.typing-animation {
+  border-right: 2px solid var(--cyber-accent);
+  animation: blink-cursor 0.8s step-end infinite;
+  padding-right: 4px;
+}
+
+/* Terminal text colors */
+.terminal-info {
+  color: #60a5fa;
+}
+
+.terminal-warn {
+  color: #facc15;
+}
+
+.terminal-error {
+  color: #f87171;
+}
+
+.terminal-success {
+  color: #4ade80;
+}
+
+.terminal-debug {
+  color: #c084fc;
+}
+
+/* ===== Neon Text Effects ===== */
+
+.neon-text {
+  color: var(--cyber-text-primary);
+  text-shadow: 
+    0 0 5px var(--cyber-primary),
+    0 0 10px var(--cyber-primary),
+    0 0 20px var(--cyber-primary);
+}
+
+.neon-text-subtle {
+  text-shadow: 
+    0 0 3px var(--cyber-primary-glow),
+    0 0 6px var(--cyber-primary-glow);
+}
+
+.neon-text-flicker {
+  animation: neon-flicker 3s infinite;
+}
+
+/* ===== Status Indicators ===== */
+
+.status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+}
+
+.status-dot-running {
+  background-color: #3b82f6;
+  animation: status-pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+}
+
+.status-dot-success {
+  background-color: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+.status-dot-error {
+  background-color: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+}
+
+.status-dot-pending {
+  background-color: #9ca3af;
+}
+
+/* ===== Interactive Hover Effects ===== */
+
+.cyber-hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cyber-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 33, 243, 0.2);
+}
+
+.dark .cyber-hover-lift:hover {
+  box-shadow: 0 8px 24px rgba(0, 33, 243, 0.3);
+}
+
+.cyber-hover-glow {
+  transition: box-shadow 0.2s ease;
+}
+
+.cyber-hover-glow:hover {
+  box-shadow: 0 0 16px var(--cyber-primary-glow);
+}
+
+/* Border glow on hover */
+.cyber-border-glow {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cyber-border-glow:hover {
+  border-color: var(--cyber-primary);
+  box-shadow: 0 0 12px var(--cyber-primary-glow);
+}
+
+/* ===== ChatToFlow - Deep Ocean Abyss Bioluminescent Effects ===== */
+
+/* Bioluminescent pulse animation - mimics deep sea creatures */
+@keyframes bioluminescent-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 4px rgba(55, 174, 226, 0.4));
+  }
+  25% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 8px rgba(55, 174, 226, 0.6))
+            drop-shadow(0 0 16px rgba(92, 112, 234, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(55, 174, 226, 0.8))
+            drop-shadow(0 0 24px rgba(92, 112, 234, 0.5))
+            drop-shadow(0 0 32px rgba(0, 33, 243, 0.3));
+  }
+  75% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 6px rgba(55, 174, 226, 0.5))
+            drop-shadow(0 0 12px rgba(92, 112, 234, 0.3));
+  }
+}
+
+/* Deep sea ripple effect */
+@keyframes deep-sea-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* Abyssal flow - slower, more ethereal than surface flow */
+@keyframes abyssal-flow {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+}
+
+/* Water current effect for ambient animation */
+@keyframes water-current {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(2px) translateY(-1px);
+  }
+  50% {
+    transform: translateX(0) translateY(-2px);
+  }
+  75% {
+    transform: translateX(-2px) translateY(-1px);
+  }
+}
+
+/* Apply bioluminescent effect to animated edges in dark mode */
+.dark .animated-edge-active {
+  animation: bioluminescent-pulse 3s ease-in-out infinite, edgeGlowPulse 2s ease-in-out infinite;
+}
+
+/* Deep sea particle trail effect */
+.dark .flow-particles {
+  animation: flowAnimation var(--flow-duration, 1.5s) linear infinite;
+  filter: drop-shadow(0 0 6px rgba(55, 174, 226, 0.9))
+          drop-shadow(0 0 12px rgba(92, 112, 234, 0.6));
+}
+
+.dark .flow-particles-glow {
+  animation: flowAnimation var(--flow-duration, 1.5s) linear infinite;
+  filter: drop-shadow(0 0 8px rgba(92, 112, 234, 0.7))
+          drop-shadow(0 0 16px rgba(0, 33, 243, 0.5));
+}
+
+/* Ambient glow for the entire flow canvas in dark mode */
+.dark .react-flow {
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(0, 33, 243, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(55, 174, 226, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at center, rgba(5, 1, 74, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+/* Edge success flash animation */
+@keyframes edge-success-flash {
+  0% {
+    stroke: var(--flow-color-end);
+    filter: drop-shadow(0 0 8px rgba(55, 174, 226, 0.8));
+  }
+  50% {
+    stroke: #22c55e;
+    filter: drop-shadow(0 0 16px rgba(34, 197, 94, 0.8))
+            drop-shadow(0 0 24px rgba(34, 197, 94, 0.4));
+  }
+  100% {
+    stroke: var(--edge-color-end);
+    filter: none;
+  }
+}
+
+/* Edge error flash animation */
+@keyframes edge-error-flash {
+  0% {
+    stroke: var(--flow-color-end);
+    filter: drop-shadow(0 0 8px rgba(55, 174, 226, 0.8));
+  }
+  50% {
+    stroke: #ef4444;
+    filter: drop-shadow(0 0 16px rgba(239, 68, 68, 0.8))
+            drop-shadow(0 0 24px rgba(239, 68, 68, 0.4));
+  }
+  100% {
+    stroke: var(--edge-color-end);
+    filter: none;
+  }
+}
+
+/* Utility class for success edge flash */
+.edge-success-flash .react-flow__edge-path {
+  animation: edge-success-flash 1s ease-out forwards;
+}
+
+/* Utility class for error edge flash */
+.edge-error-flash .react-flow__edge-path {
+  animation: edge-error-flash 1s ease-out forwards;
+}
+
+/* ========================================================================== */
+/* ===== DEEP OCEAN ABYSS - Dashboard Pages Dark Mode Styling ===== */
+/* ========================================================================== */
+/* Credentials, Workflows, and other dashboard pages with deep sea aesthetics */
+
+/* ===== Page Background - Deep Ocean Gradient ===== */
+.dark [data-slot="sidebar-inset"] {
+  background: 
+    /* Subtle ambient bioluminescent spots */
+    radial-gradient(ellipse 40% 30% at 15% 20%, rgba(0, 33, 243, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 25% at 85% 75%, rgba(55, 174, 226, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse 50% 40% at 50% 90%, rgba(92, 112, 234, 0.02) 0%, transparent 50%),
+    /* Deep abyss base gradient */
+    linear-gradient(180deg, 
+      rgba(5, 1, 74, 0.3) 0%, 
+      rgba(0, 8, 16, 0.6) 50%,
+      rgba(0, 0, 0, 0.8) 100%
+    ),
+    var(--background);
+}
+
+/* ===== Cards - Abyss Glass Morphism ===== */
+.dark [data-slot="card"] {
+  background: linear-gradient(
+    135deg,
+    rgba(5, 1, 74, 0.6) 0%,
+    rgba(0, 8, 16, 0.8) 100%
+  );
+  border-color: rgba(92, 112, 234, 0.15);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 0 1px rgba(92, 112, 234, 0.2),
+    inset 0 1px 0 rgba(92, 112, 234, 0.08);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.dark [data-slot="card"]:hover {
+  border-color: rgba(92, 112, 234, 0.25);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 33, 243, 0.1),
+    0 0 60px rgba(55, 174, 226, 0.08);
+}
+
+/* Card titles - subtle glow */
+.dark [data-slot="card-title"] {
+  color: rgba(232, 244, 252, 0.95);
+}
+
+.dark [data-slot="card-description"] {
+  color: rgba(144, 224, 239, 0.7);
+}
+
+/* ===== Entity Item Cards - Deep Sea Creature Style ===== */
+.dark .entity-item,
+.dark a[href^="/workflows/"] [data-slot="card"],
+.dark a[href^="/credentials/"] [data-slot="card"],
+.dark a[href^="/executions/"] [data-slot="card"] {
+  background: linear-gradient(
+    145deg,
+    rgba(5, 1, 74, 0.5) 0%,
+    rgba(0, 8, 16, 0.7) 50%,
+    rgba(5, 1, 74, 0.4) 100%
+  );
+  border: 1px solid rgba(92, 112, 234, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bioluminescent edge glow on hover */
+.dark a[href^="/workflows/"] [data-slot="card"]::before,
+.dark a[href^="/credentials/"] [data-slot="card"]::before,
+.dark a[href^="/executions/"] [data-slot="card"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(92, 112, 234, 0) 40%,
+    rgba(55, 174, 226, 0) 60%,
+    transparent 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dark a[href^="/workflows/"] [data-slot="card"]:hover::before,
+.dark a[href^="/credentials/"] [data-slot="card"]:hover::before,
+.dark a[href^="/executions/"] [data-slot="card"]:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 33, 243, 0.4) 0%,
+    rgba(92, 112, 234, 0.3) 25%,
+    rgba(55, 174, 226, 0.4) 50%,
+    rgba(92, 112, 234, 0.3) 75%,
+    rgba(0, 33, 243, 0.4) 100%
+  );
+  opacity: 1;
+}
+
+.dark a[href^="/workflows/"] [data-slot="card"]:hover,
+.dark a[href^="/credentials/"] [data-slot="card"]:hover,
+.dark a[href^="/executions/"] [data-slot="card"]:hover {
+  border-color: rgba(55, 174, 226, 0.3);
+  box-shadow: 
+    0 8px 40px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 33, 243, 0.15),
+    0 0 60px rgba(55, 174, 226, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ===== Sidebar - Deep Trench Styling ===== */
+.dark [data-slot="sidebar"] {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 1, 74, 0.95) 0%,
+    rgba(0, 8, 16, 0.98) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  border-right-color: rgba(92, 112, 234, 0.1);
+}
+
+/* Sidebar menu items */
+.dark [data-slot="sidebar-menu-button"] {
+  color: rgba(144, 224, 239, 0.8);
+  transition: all 0.2s ease;
+}
+
+.dark [data-slot="sidebar-menu-button"]:hover {
+  background: rgba(0, 33, 243, 0.15);
+  color: rgba(232, 244, 252, 1);
+  box-shadow: 
+    inset 0 0 20px rgba(0, 33, 243, 0.1),
+    0 0 10px rgba(0, 33, 243, 0.05);
+}
+
+.dark [data-slot="sidebar-menu-button"][data-active="true"] {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 33, 243, 0.25) 0%,
+    rgba(92, 112, 234, 0.15) 50%,
+    rgba(0, 33, 243, 0.1) 100%
+  );
+  color: rgba(232, 244, 252, 1);
+  border-left: 2px solid rgba(55, 174, 226, 0.8);
+  box-shadow: 
+    inset 0 0 30px rgba(0, 33, 243, 0.15),
+    0 0 15px rgba(55, 174, 226, 0.1);
+}
+
+/* Sidebar header with subtle glow */
+.dark [data-slot="sidebar-header"] {
+  border-bottom-color: rgba(92, 112, 234, 0.1);
+}
+
+.dark [data-slot="sidebar-footer"] {
+  border-top-color: rgba(92, 112, 234, 0.1);
+}
+
+/* ===== Buttons - Bioluminescent Accents ===== */
+.dark .btn-primary,
+.dark button[class*="bg-primary"] {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 33, 243, 0.9) 0%,
+    rgba(92, 112, 234, 0.85) 100%
+  );
+  box-shadow: 
+    0 2px 12px rgba(0, 33, 243, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(92, 112, 234, 0.3);
+  transition: all 0.2s ease;
+}
+
+.dark .btn-primary:hover,
+.dark button[class*="bg-primary"]:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 58, 255, 0.95) 0%,
+    rgba(92, 112, 234, 0.9) 100%
+  );
+  box-shadow: 
+    0 4px 20px rgba(0, 33, 243, 0.4),
+    0 0 30px rgba(55, 174, 226, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Outline/Ghost buttons */
+.dark button[class*="variant-outline"],
+.dark button[class*="variant-ghost"] {
+  border-color: rgba(92, 112, 234, 0.2);
+  color: rgba(144, 224, 239, 0.9);
+}
+
+.dark button[class*="variant-outline"]:hover,
+.dark button[class*="variant-ghost"]:hover {
+  background: rgba(0, 33, 243, 0.15);
+  border-color: rgba(92, 112, 234, 0.35);
+  color: rgba(232, 244, 252, 1);
+}
+
+/* ===== Inputs - Deep Sea Glass ===== */
+.dark input,
+.dark textarea,
+.dark [data-slot="select-trigger"] {
+  background: rgba(0, 8, 16, 0.6);
+  border-color: rgba(92, 112, 234, 0.15);
+  color: rgba(232, 244, 252, 0.95);
+  transition: all 0.2s ease;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgba(92, 112, 234, 0.5);
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark [data-slot="select-trigger"]:focus {
+  border-color: rgba(55, 174, 226, 0.5);
+  box-shadow: 
+    0 0 0 3px rgba(0, 33, 243, 0.15),
+    0 0 20px rgba(55, 174, 226, 0.1);
+  outline: none;
+}
+
+/* ===== Dropdowns & Popovers - Abyss Floating ===== */
+.dark [data-slot="dropdown-menu-content"],
+.dark [data-slot="popover-content"],
+.dark [data-slot="select-content"] {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 1, 74, 0.95) 0%,
+    rgba(0, 8, 16, 0.98) 100%
+  );
+  border-color: rgba(92, 112, 234, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 1px rgba(92, 112, 234, 0.3),
+    0 0 40px rgba(0, 33, 243, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.dark [data-slot="dropdown-menu-item"]:hover,
+.dark [data-slot="select-item"]:hover,
+.dark [data-slot="dropdown-menu-item"]:focus,
+.dark [data-slot="select-item"]:focus {
+  background: rgba(0, 33, 243, 0.2);
+}
+
+/* ===== Empty State - Floating in the Void ===== */
+.dark [data-slot="empty"] {
+  background: linear-gradient(
+    135deg,
+    rgba(5, 1, 74, 0.4) 0%,
+    rgba(0, 8, 16, 0.6) 100%
+  );
+  border-color: rgba(92, 112, 234, 0.15);
+  border-style: dashed;
+}
+
+.dark [data-slot="empty-title"] {
+  color: rgba(144, 224, 239, 0.9);
+}
+
+.dark [data-slot="empty-description"] {
+  color: rgba(92, 112, 234, 0.7);
+}
+
+/* ===== Skeleton Loading - Deep Sea Shimmer ===== */
+@keyframes abyssShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.dark .animate-pulse,
+.dark [class*="skeleton"] {
+  background: linear-gradient(
+    90deg,
+    rgba(5, 1, 74, 0.5) 0%,
+    rgba(92, 112, 234, 0.1) 20%,
+    rgba(55, 174, 226, 0.15) 40%,
+    rgba(92, 112, 234, 0.1) 60%,
+    rgba(5, 1, 74, 0.5) 100%
+  );
+  background-size: 200% 100%;
+  animation: abyssShimmer 2s ease-in-out infinite;
+}
+
+/* ===== Scrollbar - Subtle Abyss Style ===== */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(0, 8, 16, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(92, 112, 234, 0.3) 0%,
+    rgba(55, 174, 226, 0.2) 100%
+  );
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(92, 112, 234, 0.5) 0%,
+    rgba(55, 174, 226, 0.4) 100%
+  );
+}
+
+/* ===== Alerts & Badges - Underwater Signals ===== */
+.dark [data-slot="alert"] {
+  background: rgba(5, 1, 74, 0.6);
+  border-color: rgba(92, 112, 234, 0.2);
+}
+
+.dark [data-slot="badge"] {
+  background: rgba(0, 33, 243, 0.2);
+  border-color: rgba(92, 112, 234, 0.3);
+  color: rgba(144, 224, 239, 0.95);
+}
+
+/* ===== Dividers & Separators ===== */
+.dark hr,
+.dark [data-slot="separator"] {
+  border-color: rgba(92, 112, 234, 0.1);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(92, 112, 234, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+/* ===== Table Styling - Data Grids in the Deep ===== */
+.dark table {
+  border-color: rgba(92, 112, 234, 0.1);
+}
+
+.dark th {
+  background: rgba(5, 1, 74, 0.6);
+  color: rgba(144, 224, 239, 0.9);
+  border-bottom-color: rgba(92, 112, 234, 0.15);
+}
+
+.dark td {
+  border-bottom-color: rgba(92, 112, 234, 0.08);
+}
+
+.dark tr:hover td {
+  background: rgba(0, 33, 243, 0.08);
+}
+
+/* ===== Tooltip - Floating Info Bubbles ===== */
+.dark [data-slot="tooltip-content"] {
+  background: linear-gradient(
+    135deg,
+    rgba(5, 1, 74, 0.95) 0%,
+    rgba(0, 8, 16, 0.98) 100%
+  );
+  border: 1px solid rgba(92, 112, 234, 0.25);
+  color: rgba(232, 244, 252, 0.95);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 33, 243, 0.15);
+}
+
+/* ===== Dialog/Modal - Emerging from the Deep ===== */
+.dark [data-slot="dialog-content"],
+.dark [role="dialog"] {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 1, 74, 0.97) 0%,
+    rgba(0, 8, 16, 0.99) 100%
+  );
+  border-color: rgba(92, 112, 234, 0.2);
+  box-shadow: 
+    0 16px 64px rgba(0, 0, 0, 0.7),
+    0 0 1px rgba(92, 112, 234, 0.4),
+    0 0 80px rgba(0, 33, 243, 0.15),
+    inset 0 1px 0 rgba(92, 112, 234, 0.1);
+}
+
+/* Dialog overlay - murky water effect */
+.dark [data-slot="dialog-overlay"] {
+  background: rgba(0, 8, 16, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+/* ===== Tabs - Navigation in the Deep ===== */
+.dark [data-slot="tabs-list"] {
+  background: rgba(5, 1, 74, 0.4);
+  border-color: rgba(92, 112, 234, 0.1);
+}
+
+.dark [data-slot="tabs-trigger"] {
+  color: rgba(144, 224, 239, 0.7);
+}
+
+.dark [data-slot="tabs-trigger"]:hover {
+  color: rgba(232, 244, 252, 0.9);
+  background: rgba(0, 33, 243, 0.1);
+}
+
+.dark [data-slot="tabs-trigger"][data-state="active"] {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 33, 243, 0.2) 0%,
+    rgba(92, 112, 234, 0.1) 100%
+  );
+  color: rgba(232, 244, 252, 1);
+  box-shadow: 
+    inset 0 -2px 0 rgba(55, 174, 226, 0.6),
+    0 0 15px rgba(0, 33, 243, 0.1);
+}
+
+/* ========================================================================== */
+/* ===== DEEP ABYSS - Darker Button & Action Elements ===== */
+/* ========================================================================== */
+/* Darker, more subdued buttons that are still prominent against the abyss */
+
+/* ===== Primary Action Buttons (Execute, Chat, etc.) - DARKER ===== */
+.dark button[class*="bg-primary"],
+.dark .btn-primary,
+.dark [class*="bg-primary"]:not([data-slot]):not(.react-flow__handle) {
+  background: linear-gradient(
+    145deg,
+    #0d1b4a 0%,
+    #0a1432 50%,
+    #0d1b4a 100%
+  ) !important;
+  border: 1px solid rgba(55, 174, 226, 0.2) !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 0 1px rgba(55, 174, 226, 0.3),
+    inset 0 1px 0 rgba(55, 174, 226, 0.1) !important;
+  color: rgba(232, 244, 252, 0.95) !important;
+  transition: all 0.25s ease !important;
+}
+
+.dark button[class*="bg-primary"]:hover,
+.dark .btn-primary:hover,
+.dark [class*="bg-primary"]:not([data-slot]):not(.react-flow__handle):hover {
+  background: linear-gradient(
+    145deg,
+    #152558 0%,
+    #0f1d42 50%,
+    #152558 100%
+  ) !important;
+  border-color: rgba(55, 174, 226, 0.35) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(55, 174, 226, 0.15),
+    0 0 2px rgba(55, 174, 226, 0.4),
+    inset 0 1px 0 rgba(55, 174, 226, 0.15) !important;
+}
+
+/* Floating action buttons (Chatbot circle, etc.) */
+.dark button[class*="rounded-full"][class*="bg-primary"],
+.dark [class*="rounded-full"][class*="bg-primary"]:not(.react-flow__handle) {
+  background: linear-gradient(
+    145deg,
+    #0d1b4a 0%,
+    #081230 100%
+  ) !important;
+  border: 1px solid rgba(55, 174, 226, 0.25) !important;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(55, 174, 226, 0.1),
+    inset 0 1px 0 rgba(55, 174, 226, 0.1) !important;
+}
+
+.dark button[class*="rounded-full"][class*="bg-primary"]:hover,
+.dark [class*="rounded-full"][class*="bg-primary"]:not(.react-flow__handle):hover {
+  background: linear-gradient(
+    145deg,
+    #152558 0%,
+    #0d1b4a 100%
+  ) !important;
+  box-shadow: 
+    0 6px 28px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(55, 174, 226, 0.2),
+    0 0 2px rgba(55, 174, 226, 0.5),
+    inset 0 1px 0 rgba(55, 174, 226, 0.2) !important;
+  transform: scale(1.05);
+}
+
+/* ===== Add Node Panel & Node Items - SUBDUED ===== */
+
+/* Add Node Panel Container */
+.dark [class*="CommandDialog"],
+.dark [role="dialog"][class*="command"],
+.dark [data-slot="dialog-content"]:has([cmdk-root]) {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 1, 74, 0.97) 0%,
+    rgba(0, 8, 16, 0.99) 100%
+  ) !important;
+}
+
+/* Node Item Cards in Add Node Panel - Much darker */
+.dark [cmdk-item],
+.dark [role="option"] {
+  background: linear-gradient(
+    145deg,
+    rgba(10, 22, 40, 0.9) 0%,
+    rgba(5, 12, 28, 0.95) 100%
+  ) !important;
+  border: 1px solid rgba(92, 112, 234, 0.12) !important;
+  border-radius: 8px !important;
+  margin: 2px 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.dark [cmdk-item]:hover,
+.dark [cmdk-item][aria-selected="true"],
+.dark [role="option"]:hover,
+.dark [role="option"][data-selected="true"] {
+  background: linear-gradient(
+    145deg,
+    rgba(15, 35, 64, 0.95) 0%,
+    rgba(10, 25, 50, 0.98) 100%
+  ) !important;
+  border-color: rgba(55, 174, 226, 0.25) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(55, 174, 226, 0.08),
+    inset 0 1px 0 rgba(55, 174, 226, 0.1) !important;
+}
+
+/* Node Category Headers */
+.dark [cmdk-group-heading] {
+  color: rgba(144, 224, 239, 0.7) !important;
+  background: rgba(5, 1, 74, 0.8) !important;
+  padding: 8px 12px !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Filter Pills/Tabs in Add Node Panel */
+.dark [cmdk-root] button[class*="rounded"],
+.dark [role="tablist"] button {
+  background: rgba(10, 22, 40, 0.8) !important;
+  border: 1px solid rgba(92, 112, 234, 0.15) !important;
+  color: rgba(144, 224, 239, 0.8) !important;
+  transition: all 0.2s ease !important;
+}
+
+.dark [cmdk-root] button[class*="rounded"]:hover,
+.dark [cmdk-root] button[class*="rounded"][data-state="active"],
+.dark [role="tablist"] button:hover,
+.dark [role="tablist"] button[data-state="active"] {
+  background: rgba(13, 27, 74, 0.9) !important;
+  border-color: rgba(55, 174, 226, 0.3) !important;
+  color: rgba(232, 244, 252, 0.95) !important;
+}
+
+/* Search Input in Add Node Panel */
+.dark [cmdk-input] {
+  background: rgba(5, 12, 28, 0.8) !important;
+  border-color: rgba(92, 112, 234, 0.15) !important;
+  color: rgba(232, 244, 252, 0.95) !important;
+}
+
+.dark [cmdk-input]::placeholder {
+  color: rgba(92, 112, 234, 0.5) !important;
+}
+
+.dark [cmdk-input]:focus {
+  border-color: rgba(55, 174, 226, 0.4) !important;
+  box-shadow: 0 0 0 3px rgba(55, 174, 226, 0.1) !important;
+}
+
+/* React Flow Controls - Darker */
+.dark .react-flow__controls button {
+  background: rgba(10, 22, 40, 0.9) !important;
+  border-color: rgba(92, 112, 234, 0.15) !important;
+  color: rgba(144, 224, 239, 0.9) !important;
+}
+
+.dark .react-flow__controls button:hover {
+  background: rgba(15, 35, 64, 0.95) !important;
+  border-color: rgba(55, 174, 226, 0.3) !important;
+  color: rgba(232, 244, 252, 1) !important;
+}
+
+/* Panel buttons in the workflow editor */
+.dark .react-flow__panel button {
+  background: linear-gradient(
+    145deg,
+    rgba(13, 27, 74, 0.85) 0%,
+    rgba(8, 18, 48, 0.9) 100%
+  ) !important;
+  border: 1px solid rgba(92, 112, 234, 0.2) !important;
+  color: rgba(232, 244, 252, 0.9) !important;
+  backdrop-filter: blur(8px);
+}
+
+.dark .react-flow__panel button:hover {
+  background: linear-gradient(
+    145deg,
+    rgba(21, 37, 88, 0.9) 0%,
+    rgba(13, 27, 74, 0.95) 100%
+  ) !important;
+  border-color: rgba(55, 174, 226, 0.35) !important;
+  box-shadow: 0 0 15px rgba(55, 174, 226, 0.15) !important;
+}
+
+/* ========================================================================== */
+/* ===== SURFACE OCEAN - Light Mode Interactive Effects ===== */
+/* ========================================================================== */
+/* Light mode uses subtle shadow/darkening on interaction (opposite of glow) */
+
+/* ===== Light Mode Variables ===== */
+:root {
+  /* Surface Ocean Interaction Colors */
+  --surface-shadow: rgba(0, 119, 182, 0.12);
+  --surface-shadow-hover: rgba(0, 119, 182, 0.2);
+  --surface-darken: rgba(0, 77, 128, 0.08);
+  --surface-press: rgba(0, 77, 128, 0.15);
+  --surface-border-focus: rgba(0, 119, 182, 0.4);
+}
+
+/* ===== Primary Buttons - Subtle Depth Effect ===== */
+button[class*="bg-primary"]:not(.dark *),
+.btn-primary:not(.dark *),
+[class*="bg-primary"]:not([data-slot]):not(.react-flow__handle):not(.dark *) {
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 1px 3px rgba(0, 77, 128, 0.15),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+button[class*="bg-primary"]:hover:not(.dark *),
+.btn-primary:hover:not(.dark *),
+[class*="bg-primary"]:not([data-slot]):not(.react-flow__handle):hover:not(.dark *) {
+  box-shadow: 
+    0 4px 12px rgba(0, 77, 128, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    inset 0 -1px 0 rgba(0, 77, 128, 0.1);
+  transform: translateY(-1px);
+}
+
+button[class*="bg-primary"]:active:not(.dark *),
+.btn-primary:active:not(.dark *),
+[class*="bg-primary"]:not([data-slot]):not(.react-flow__handle):active:not(.dark *) {
+  box-shadow: 
+    0 1px 2px rgba(0, 77, 128, 0.2),
+    inset 0 2px 4px rgba(0, 77, 128, 0.15);
+  transform: translateY(0);
+}
+
+/* Floating action buttons - Light mode */
+button[class*="rounded-full"][class*="bg-primary"]:not(.dark *):not(.react-flow__handle),
+[class*="rounded-full"][class*="bg-primary"]:not(.dark *):not(.react-flow__handle) {
+  box-shadow: 
+    0 4px 16px rgba(0, 77, 128, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+}
+
+button[class*="rounded-full"][class*="bg-primary"]:hover:not(.dark *):not(.react-flow__handle),
+[class*="rounded-full"][class*="bg-primary"]:hover:not(.dark *):not(.react-flow__handle) {
+  box-shadow: 
+    0 8px 24px rgba(0, 77, 128, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* ===== Cards & Entity Items - Depth on Hover ===== */
+[data-slot="card"]:not(.dark *) {
+  transition: all 0.2s ease;
+}
+
+[data-slot="card"]:hover:not(.dark *) {
+  box-shadow: 
+    0 4px 16px rgba(0, 77, 128, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 8px 24px rgba(0, 119, 182, 0.08);
+  transform: translateY(-2px);
+}
+
+.entity-item:not(.dark *) {
+  transition: all 0.2s ease;
+}
+
+.entity-item:hover:not(.dark *) {
+  box-shadow: 
+    0 6px 20px rgba(0, 77, 128, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  border-color: rgba(0, 119, 182, 0.25);
+}
+
+/* ===== Outline/Ghost Buttons - Subtle Shadow ===== */
+button[class*="variant-outline"]:not(.dark *),
+button[class*="variant-ghost"]:not(.dark *),
+button[class*="variant-secondary"]:not(.dark *) {
+  transition: all 0.2s ease;
+}
+
+button[class*="variant-outline"]:hover:not(.dark *),
+button[class*="variant-ghost"]:hover:not(.dark *),
+button[class*="variant-secondary"]:hover:not(.dark *) {
+  background: rgba(0, 119, 182, 0.06);
+  box-shadow: 
+    0 2px 8px rgba(0, 77, 128, 0.08),
+    inset 0 0 0 1px rgba(0, 119, 182, 0.1);
+}
+
+button[class*="variant-outline"]:active:not(.dark *),
+button[class*="variant-ghost"]:active:not(.dark *),
+button[class*="variant-secondary"]:active:not(.dark *) {
+  background: rgba(0, 119, 182, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 77, 128, 0.1);
+}
+
+/* ===== Input Fields - Focus Depth ===== */
+input:not(.dark *),
+textarea:not(.dark *),
+[data-slot="select-trigger"]:not(.dark *) {
+  transition: all 0.2s ease;
+}
+
+input:focus:not(.dark *),
+textarea:focus:not(.dark *),
+[data-slot="select-trigger"]:focus:not(.dark *) {
+  box-shadow: 
+    0 0 0 3px rgba(0, 119, 182, 0.1),
+    0 2px 8px rgba(0, 77, 128, 0.08),
+    inset 0 1px 2px rgba(0, 77, 128, 0.05);
+  border-color: rgba(0, 119, 182, 0.4);
+}
+
+/* ===== Dropdowns & Popovers - Floating Shadow ===== */
+[data-slot="dropdown-menu-content"]:not(.dark *),
+[data-slot="popover-content"]:not(.dark *),
+[data-slot="select-content"]:not(.dark *) {
+  box-shadow: 
+    0 8px 32px rgba(0, 77, 128, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 1px rgba(0, 119, 182, 0.2);
+}
+
+[data-slot="dropdown-menu-item"]:hover:not(.dark *),
+[data-slot="select-item"]:hover:not(.dark *) {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 180, 216, 0.08) 0%,
+    rgba(72, 202, 228, 0.05) 100%
+  );
+}
+
+/* ===== Dialog/Modal - Depth Shadow ===== */
+[data-slot="dialog-content"]:not(.dark *),
+[role="dialog"]:not(.dark *) {
+  box-shadow: 
+    0 16px 48px rgba(0, 77, 128, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    0 0 1px rgba(0, 119, 182, 0.25);
+}
+
+/* ===== Add Node Panel - Light Mode ===== */
+[cmdk-item]:not(.dark *),
+[role="option"]:not(.dark *) {
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  margin: 2px 4px;
+}
+
+[cmdk-item]:hover:not(.dark *),
+[cmdk-item][aria-selected="true"]:not(.dark *),
+[role="option"]:hover:not(.dark *),
+[role="option"][data-selected="true"]:not(.dark *) {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 180, 216, 0.1) 0%,
+    rgba(72, 202, 228, 0.06) 100%
+  );
+  box-shadow: 
+    0 2px 8px rgba(0, 77, 128, 0.08),
+    inset 0 0 0 1px rgba(0, 119, 182, 0.15);
+  transform: translateX(2px);
+}
+
+/* Category headers - Light mode */
+[cmdk-group-heading]:not(.dark *) {
+  color: rgba(0, 77, 128, 0.7);
+  background: rgba(0, 180, 216, 0.05);
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== React Flow Controls - Light Mode Depth ===== */
+.react-flow__controls:not(.dark *) button {
+  transition: all 0.2s ease;
+}
+
+.react-flow__controls:not(.dark *) button:hover {
+  box-shadow: 
+    0 2px 8px rgba(0, 77, 128, 0.12),
+    inset 0 -1px 0 rgba(0, 77, 128, 0.08);
+  transform: translateY(-1px);
+}
+
+.react-flow__controls:not(.dark *) button:active {
+  box-shadow: inset 0 1px 3px rgba(0, 77, 128, 0.15);
+  transform: translateY(0);
+}
+
+/* ===== Tabs - Light Mode ===== */
+[data-slot="tabs-trigger"]:hover:not(.dark *) {
+  background: rgba(0, 180, 216, 0.08);
+  box-shadow: inset 0 -1px 0 rgba(0, 119, 182, 0.2);
+}
+
+[data-slot="tabs-trigger"][data-state="active"]:not(.dark *) {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 180, 216, 0.1) 0%,
+    rgba(72, 202, 228, 0.05) 100%
+  );
+  box-shadow: 
+    inset 0 -2px 0 rgba(0, 119, 182, 0.6),
+    0 1px 4px rgba(0, 77, 128, 0.08);
+}
+
+/* ===== Sidebar - Light Mode Clean & Minimal ===== */
+/* Items blend in, only show subtle darkening on hover/active */
+
+/* Remove any visual box-shadow from sidebar container in light mode */
+[data-sidebar]:not(.dark *) {
+  box-shadow: none;
+}
+
+/* Sidebar inner should have no visual separation */
+[data-sidebar="sidebar"]:not(.dark *) {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Sidebar content - no cards, no backgrounds */
+[data-sidebar="content"]:not(.dark *) {
+  background: transparent !important;
+}
+
+/* Sidebar groups should be invisible (no cards) */
+[data-sidebar="group"]:not(.dark *) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+[data-sidebar="menu"]:not(.dark *) {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+[data-sidebar="group-content"]:not(.dark *) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[data-sidebar="menu-item"]:not(.dark *) {
+  background: transparent !important;
+}
+
+/* Menu buttons - completely transparent by default */
+[data-sidebar="menu-button"]:not(.dark *),
+[data-slot="sidebar-menu-button"]:not(.dark *) {
+  background: transparent !important;
+  transition: all 0.15s ease;
+  box-shadow: none !important;
+}
+
+/* Hover - subtle darkening effect */
+[data-sidebar="menu-button"]:hover:not(.dark *),
+[data-slot="sidebar-menu-button"]:hover:not(.dark *) {
+  background: rgba(0, 77, 128, 0.06) !important;
+  box-shadow: none !important;
+}
+
+/* Active - slightly darker with subtle left accent */
+[data-sidebar="menu-button"][data-active="true"]:not(.dark *),
+[data-slot="sidebar-menu-button"][data-active="true"]:not(.dark *) {
+  background: rgba(0, 77, 128, 0.08) !important;
+  box-shadow: inset 3px 0 0 rgba(0, 119, 182, 0.5) !important;
+}
+
+/* Active + Hover - slightly more prominent */
+[data-sidebar="menu-button"][data-active="true"]:hover:not(.dark *),
+[data-slot="sidebar-menu-button"][data-active="true"]:hover:not(.dark *) {
+  background: rgba(0, 77, 128, 0.1) !important;
+}
+
+/* Sidebar header - clean */
+[data-sidebar="header"]:not(.dark *),
+[data-slot="sidebar-header"]:not(.dark *) {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Sidebar footer - clean */
+[data-sidebar="footer"]:not(.dark *),
+[data-slot="sidebar-footer"]:not(.dark *) {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Separator between sections - very subtle */
+[data-sidebar="separator"]:not(.dark *) {
+  background: rgba(0, 77, 128, 0.06);
+  height: 1px;
+  margin: 4px 8px;
+}
+
+/* ===== Badge - Light Mode ===== */
+[data-slot="badge"]:not(.dark *) {
+  box-shadow: 0 1px 3px rgba(0, 77, 128, 0.08);
+}
+
+/* ===== Table Rows - Light Mode Hover ===== */
+tr:hover:not(.dark *) td {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 180, 216, 0.04) 0%,
+    rgba(72, 202, 228, 0.02) 100%
+  );
+}
+
+/* ===== Tooltip - Light Mode ===== */
+[data-slot="tooltip-content"]:not(.dark *) {
+  box-shadow: 
+    0 4px 16px rgba(0, 77, 128, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.06);
+}
+

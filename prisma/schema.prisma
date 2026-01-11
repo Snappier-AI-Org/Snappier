@@ -1,0 +1,527 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../src/generated/prisma"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String               @id
+  name                String
+  email               String               @unique
+  emailVerified       Boolean              @default(false)
+  image               String?
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @default(now()) @updatedAt
+  referralCode        String?              @unique
+  referredById        String?
+  credentials         Credential[]
+  payoutRequests      PayoutRequest[]
+  referralClicks      ReferralClick[]
+  referralCommissions ReferralCommission[]
+  templates           Template[]
+  templateEarnings    TemplateEarning[]
+  templatePurchases   TemplatePurchase[]
+  workflows           Workflow[]
+  accounts            Account[]
+  sessions            Session[]
+  referredBy          User?                @relation("Referrals", fields: [referredById], references: [id])
+  referrals           User[]               @relation("Referrals")
+
+  @@index([referralCode])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("verification")
+}
+
+model Credential {
+  id        String         @id @default(cuid())
+  name      String
+  value     String
+  type      CredentialType
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  userId    String
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Node      Node[]
+}
+
+model Workflow {
+  id           String        @id @default(cuid())
+  name         String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  userId       String
+  chatMessages ChatMessage[]
+  connections  Connection[]
+  executions   Execution[]
+  nodes        Node[]
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ChatMessage {
+  id         String   @id @default(cuid())
+  workflowId String
+  role       String
+  content    String
+  parts      Json?
+  createdAt  DateTime @default(now())
+  workflow   Workflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+
+  @@index([workflowId])
+  @@index([workflowId, createdAt])
+}
+
+model Node {
+  id                String       @id @default(cuid())
+  workflowId        String
+  name              String
+  type              NodeType
+  position          Json
+  data              Json         @default("{}")
+  credentialId      String?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  outputConnections Connection[] @relation("FromNode")
+  inputConnections  Connection[] @relation("ToNode")
+  credential        Credential?  @relation(fields: [credentialId], references: [id])
+  workflow          Workflow     @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+}
+
+model Connection {
+  id         String   @id @default(cuid())
+  workflowId String
+  fromNodeId String
+  toNodeId   String
+  fromOutput String   @default("main")
+  toInput    String   @default("main")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  fromNode   Node     @relation("FromNode", fields: [fromNodeId], references: [id], onDelete: Cascade)
+  toNode     Node     @relation("ToNode", fields: [toNodeId], references: [id], onDelete: Cascade)
+  workflow   Workflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+
+  @@unique([fromNodeId, toNodeId, fromOutput, toInput])
+}
+
+model Execution {
+  id             String          @id @default(cuid())
+  workflowId     String
+  status         ExecutionStatus @default(RUNNING)
+  error          String?
+  errorStack     String?
+  startedAt      DateTime        @default(now())
+  completedAt    DateTime?
+  inngestEventId String          @unique
+  output         Json?
+  workflow       Workflow        @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+}
+
+model GmailWatch {
+  id           String   @id @default(cuid())
+  userId       String
+  workflowId   String
+  credentialId String
+  historyId    String
+  expiration   DateTime
+  labelIds     String[] @default(["INBOX"])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([workflowId, credentialId])
+  @@index([userId])
+  @@index([expiration])
+}
+
+model ScheduledWorkflow {
+  id              String       @id @default(cuid())
+  userId          String
+  workflowId      String
+  nodeId          String
+  scheduleType    ScheduleType
+  timezone        String       @default("UTC")
+  enabled         Boolean      @default(true)
+  cronExpression  String?
+  intervalValue   Int?
+  intervalUnit    String?
+  hour            Int?
+  minute          Int?
+  daysOfWeek      Int[]        @default([])
+  dayOfMonth      Int?
+  nextRunAt       DateTime?
+  lastRunAt       DateTime?
+  lastExecutionId String?
+  startDate       DateTime?
+  endDate         DateTime?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  @@unique([workflowId, nodeId])
+  @@index([userId])
+  @@index([enabled, nextRunAt])
+}
+
+model Template {
+  id               String             @id @default(cuid())
+  name             String
+  description      String?
+  thumbnail        String?
+  nodes            Json
+  connections      Json
+  visibility       TemplateVisibility @default(PRIVATE)
+  category         TemplateCategory   @default(OTHER)
+  tags             String[]           @default([])
+  price            Int                @default(0)
+  currency         String             @default("USD")
+  usageCount       Int                @default(0)
+  userId           String
+  sourceWorkflowId String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  purchases        TemplatePurchase[]
+
+  @@index([userId])
+  @@index([visibility])
+  @@index([category])
+  @@index([visibility, category])
+}
+
+model TemplatePurchase {
+  id            String   @id @default(cuid())
+  userId        String
+  templateId    String
+  pricePaid     Int      @default(0)
+  currency      String   @default("USD")
+  paymentId     String?
+  paymentStatus String   @default("pending")
+  earningId     String?
+  createdAt     DateTime @default(now())
+  template      Template @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, templateId])
+  @@index([userId])
+  @@index([templateId])
+  @@index([paymentStatus])
+}
+
+model ReferralClick {
+  id                String   @id @default(cuid())
+  referrerId        String
+  ipAddress         String?
+  userAgent         String?
+  referer           String?
+  convertedToSignup Boolean  @default(false)
+  convertedUserId   String?
+  createdAt         DateTime @default(now())
+  referrer          User     @relation(fields: [referrerId], references: [id], onDelete: Cascade)
+
+  @@index([referrerId])
+  @@index([referrerId, createdAt])
+  @@index([convertedUserId])
+}
+
+model ReferralCommission {
+  id                 String           @id @default(cuid())
+  referrerId         String
+  referredUserId     String
+  subscriptionAmount Int
+  commissionRate     Float            @default(0.10)
+  commissionAmount   Int
+  currency           String           @default("USD")
+  status             CommissionStatus @default(PENDING)
+  subscriptionId     String?
+  payoutId           String?
+  paidAt             DateTime?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  referrer           User             @relation(fields: [referrerId], references: [id], onDelete: Cascade)
+
+  @@index([referrerId])
+  @@index([referrerId, status])
+  @@index([referredUserId])
+}
+
+model TemplateEarning {
+  id          String        @id @default(cuid())
+  sellerId    String
+  templateId  String
+  purchaseId  String        @unique
+  saleAmount  Int
+  platformFee Int           @default(0)
+  netEarning  Int
+  currency    String        @default("USD")
+  status      EarningStatus @default(PENDING)
+  payoutId    String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  seller      User          @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+
+  @@index([sellerId])
+  @@index([sellerId, status])
+  @@index([templateId])
+}
+
+model PayoutRequest {
+  id             String       @id @default(cuid())
+  userId         String
+  amount         Int
+  currency       String       @default("USD")
+  method         PayoutMethod
+  payoutDetails  Json
+  status         PayoutStatus @default(PENDING)
+  adminNotes     String?
+  processedBy    String?
+  processedAt    DateTime?
+  transactionId  String?
+  transactionFee Int?
+  referralIds    String[]     @default([])
+  earningIds     String[]     @default([])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, status])
+  @@index([status])
+}
+
+enum CredentialType {
+  OPENAI
+  ANTHROPIC
+  GEMINI
+  GROQ
+  HUGGINGFACE
+  OPENROUTER
+  GOOGLE_SHEETS
+  GOOGLE_DRIVE
+  GMAIL
+  GOOGLE_CALENDAR
+  GOOGLE_DOCS
+  TRELLO
+  OUTLOOK
+  NOTION
+  GITHUB
+  DISCORD
+  META_INSTAGRAM
+  TWILIO
+  SENDGRID
+  AIRTABLE
+  SUPABASE
+  MYSQL
+  POSTGRES
+  MONGODB
+  REDIS
+  HUBSPOT
+  SALESFORCE
+  PIPEDRIVE
+  JIRA
+  CLICKUP
+  TODOIST
+  ASANA
+  LINEAR
+  TWITTER
+  AWS
+  DROPBOX
+  MICROSOFT
+  TELEGRAM
+  WHATSAPP
+  TYPEFORM
+  PAYPAL
+}
+
+enum NodeType {
+  INITIAL
+  MANUAL_TRIGGER
+  GOOGLE_FORM_TRIGGER
+  STRIPE_TRIGGER
+  PAYPAL_TRIGGER
+  GMAIL_TRIGGER
+  SCHEDULE_TRIGGER
+  WEBHOOK_TRIGGER
+  DISCORD_TRIGGER
+  INSTAGRAM_TRIGGER
+  INSTAGRAM_DM_TRIGGER
+  INSTAGRAM_COMMENT_TRIGGER
+  TELEGRAM_TRIGGER
+  AIRTABLE_TRIGGER
+  NOTION_TRIGGER
+  GOOGLE_DRIVE_TRIGGER
+  GOOGLE_CALENDAR_TRIGGER
+  HUBSPOT_TRIGGER
+  JIRA_TRIGGER
+  TWITTER_TRIGGER
+  TYPEFORM_TRIGGER
+  ANTHROPIC
+  GEMINI
+  OPENAI
+  GROQ
+  HUGGINGFACE
+  OPENROUTER
+  DISCORD
+  SLACK
+  TELEGRAM
+  WHATSAPP
+  ZALO
+  INSTAGRAM_DM
+  INSTAGRAM_COMMENT_REPLY
+  TWILIO
+  SENDGRID
+  GOOGLE_SHEETS
+  GOOGLE_DRIVE
+  GMAIL
+  GOOGLE_CALENDAR
+  GOOGLE_DOCS
+  AIRTABLE
+  SUPABASE
+  MYSQL
+  POSTGRES
+  MONGODB
+  REDIS
+  HUBSPOT
+  SALESFORCE
+  PIPEDRIVE
+  TRELLO
+  JIRA
+  CLICKUP
+  TODOIST
+  ASANA
+  LINEAR
+  HTTP_REQUEST
+  OUTLOOK
+  NOTION
+  GITHUB
+  TWITTER
+  AWS_S3
+  DROPBOX
+  MICROSOFT_EXCEL
+  GRAPHQL
+  FILTER_CONDITIONAL
+  DELAY_WAIT
+  CODE
+  MERGE
+  SPLIT
+  SWITCH
+  LOOP
+  SET
+  ERROR_TRIGGER
+  DATETIME
+  CRYPTO
+  JSON_PARSE
+  AGGREGATE
+}
+
+enum ExecutionStatus {
+  RUNNING
+  SUCCESS
+  FAILED
+}
+
+enum ScheduleType {
+  CRON
+  INTERVAL
+  DAILY
+  WEEKLY
+  MONTHLY
+}
+
+enum TemplateVisibility {
+  PRIVATE
+  PUBLIC
+  MARKETPLACE
+}
+
+enum TemplateCategory {
+  AUTOMATION
+  MARKETING
+  SALES
+  SUPPORT
+  SOCIAL_MEDIA
+  AI_ASSISTANT
+  DATA_SYNC
+  NOTIFICATIONS
+  OTHER
+}
+
+enum CommissionStatus {
+  PENDING
+  APPROVED
+  PAID
+  CANCELLED
+}
+
+enum EarningType {
+  TEMPLATE_SALE
+  REFERRAL
+}
+
+enum EarningStatus {
+  PENDING
+  AVAILABLE
+  WITHDRAWN
+  CANCELLED
+}
+
+enum PayoutStatus {
+  PENDING
+  APPROVED
+  PROCESSING
+  COMPLETED
+  REJECTED
+  CANCELLED
+}
+
+enum PayoutMethod {
+  PAYPAL
+  BANK_TRANSFER
+  WISE
+  CRYPTO
+  OTHER
+}
