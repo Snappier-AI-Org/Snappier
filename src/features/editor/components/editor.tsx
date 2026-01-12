@@ -282,8 +282,8 @@ const hasManualTrigger = useMemo(() => {
           <AddNodePanel />
           </ReactFlow>
 
-          {/* Floating Chat & Summary Panel */}
-          <ChatSummaryPanel nodes={nodes} edges={edges} />
+          {/* Floating Chat & Summary Panel - Hidden */}
+          {/* <ChatSummaryPanel nodes={nodes} edges={edges} /> */}
         </div>
       </AddNodePanelProvider>
     </WorkflowProvider>

@@ -62,40 +62,42 @@ const menuItems = [
       },
     ],
   },
-  {
-    title: "Templates",
-    items: [
-      {
-        title: "My Templates",
-        icon: LayoutTemplateIcon,
-        url: "/templates",
-        description: "Your saved templates",
-      },
-      {
-        title: "Marketplace",
-        icon: ShoppingBagIcon,
-        url: "/marketplace",
-        description: "Browse community",
-      },
-    ],
-  },
-  {
-    title: "Earnings",
-    items: [
-      {
-        title: "Referrals",
-        icon: Gift,
-        url: "/referrals",
-        description: "Invite & earn",
-      },
-      {
-        title: "Earnings",
-        icon: Wallet,
-        url: "/earnings",
-        description: "Your revenue",
-      },
-    ],
-  },
+  // Hidden: Templates section
+  // {
+  //   title: "Templates",
+  //   items: [
+  //     {
+  //       title: "My Templates",
+  //       icon: LayoutTemplateIcon,
+  //       url: "/templates",
+  //       description: "Your saved templates",
+  //     },
+  //     {
+  //       title: "Marketplace",
+  //       icon: ShoppingBagIcon,
+  //       url: "/marketplace",
+  //       description: "Browse community",
+  //     },
+  //   ],
+  // },
+  // Hidden: Earnings section
+  // {
+  //   title: "Earnings",
+  //   items: [
+  //     {
+  //       title: "Referrals",
+  //       icon: Gift,
+  //       url: "/referrals",
+  //       description: "Invite & earn",
+  //     },
+  //     {
+  //       title: "Earnings",
+  //       icon: Wallet,
+  //       url: "/earnings",
+  //       description: "Your revenue",
+  //     },
+  //   ],
+  // },
 ];
 
 export const AppSidebar = memo(() => {
